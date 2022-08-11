@@ -2,10 +2,15 @@ import face_recognition
 import cv2
 import numpy as np
 
+
 def main():
     identity_check()
 
+
 def identity_check():
+    # TODO: - make this function return true if the person was recognized, else return false.
+    #       - write pydoc
+
     # Get a reference to webcam #0 (the default one)
     video_capture = cv2.VideoCapture(0)
 
@@ -97,6 +102,6 @@ def identity_check():
     video_capture.release()
     cv2.destroyAllWindows()
 
+
 if __name__ == '__main__':
     main()
-
