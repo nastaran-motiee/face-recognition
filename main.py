@@ -2,43 +2,83 @@ import face_recognition
 import cv2
 import numpy as np
 
+from kivy.logger import Logger
+import logging
+
+Logger.setLevel(logging.TRACE)
+
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.camera import Camera
+from kivy.uix.widget import Widget
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
+from kivy.clock import Clock
+from kivy.graphics.texture import Texture
+
 
 def main():
-    identity_check()
+    FaceRecognition().run()
+    cv2.destroyAllWindows()
+
+class Cam(Widget):
+    pass
 
 
-def identity_check():
-    # TODO: - make this function return true if the person was recognized, else return false.
-    #       - write pydoc
+class FaceRecognition(App):
 
-    # Get a reference to webcam #0 (the default one)
-    video_capture = cv2.VideoCapture(0)
+    def build(self):
+        self.img1 = Image()
+        layout = BoxLayout()
+        layout.add_widget(self.img1)
+        # opencv2 stuffs
+        self.capture = cv2.VideoCapture(0)
+        cv2.namedWindow("CV2 Image")
+        Clock.schedule_interval(self.update, 1.0 / 33.0)
+        return layout
 
-    # Load a sample picture and learn how to recognize it.
-    obama_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
-    obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+    def update(self, dt):
+        # display image from cam in opencv window
+        ret, frame = self.capture.read()
+        cv2.imshow("CV2 Image", frame)
+        # convert it to texture
+        buf1 = cv2.flip(frame, 0)
+        buf = buf1.tostring()
+        texture1 = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='bgr')
+        # if working on RASPBERRY PI, use colorfmt='rgba' here instead, but stick with "bgr" in blit_buffer.
+        texture1.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
+        # display image from the texture
+        self.img1.texture = texture1
 
-    # Load a second sample picture and learn how to recognize it.
-    biden_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
-    biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+    def m_build(self):
+        video_capture = Camera(resolution=(640, 480), play=True)
 
-    # Create arrays of known face encodings and their names
-    known_face_encodings = [
-        obama_face_encoding,
-        biden_face_encoding
-    ]
-    known_face_names = [
-        "Nastaran Motiee",
-        "Joe Biden"
-    ]
+        # TODO: - make this function return true if the person was recognized, else return false.
+        #       - write pydoc
 
-    # Initialize some variables
-    face_locations = []
-    face_encodings = []
-    face_names = []
-    process_this_frame = True
+        # Load a sample picture and learn how to recognize it.
+        obama_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
+        obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
-    while True:
+        # Load a second sample picture and learn how to recognize it.
+        biden_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
+        biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+
+        # Create arrays of known face encodings and their names
+        known_face_encodings = [
+            obama_face_encoding,
+            biden_face_encoding
+        ]
+        known_face_names = [
+            "Nastaran Motiee",
+            "Joe Biden"
+        ]
+
+        # Initialize some variables
+        face_locations = []
+        face_encodings = []
+        face_names = []
+        process_this_frame = True
         # Grab a single frame of video
         ret, frame = video_capture.read()
 
@@ -91,17 +131,12 @@ def identity_check():
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-        # Display the resulting image
-        cv2.imshow('Video', frame)
-
-        # Hit 'q' on the keyboard to quit!
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    # Release handle to the webcam
-    video_capture.release()
-    cv2.destroyAllWindows()
+        return video_capture
 
 
 if __name__ == '__main__':
     main()
+
+
+
+jkjhkjjhj
