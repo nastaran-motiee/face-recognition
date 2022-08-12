@@ -6,10 +6,29 @@ import face_recognition
 import cv2
 import numpy as np
 
+from threading import Lock, Thread
+
+
+class SingletonMeta(type):
+    """
+    Thread-safe implementation of Singleton.
+    """
+
+    _instances = {}
+    _lock: Lock = Lock()
+
+    def __call__(cls, *args, **kwargs):
+        with cls._lock:
+            if cls not in cls._instances:
+                instance = super().__call__(*args, **kwargs)
+                cls._instances[cls] = instance
+        return cls._instances[cls]
 
 class KivyCamera(Image):
     def __init__(self, capture, fps, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
+        self.frame = None
+        self.ret = None
         self.load_data()
         self.capture = capture
         Clock.schedule_interval(self.update, 1.0 / fps)
@@ -21,8 +40,7 @@ class KivyCamera(Image):
             # convert it to texture
             buf1 = cv2.flip(self.frame, 0)
             buf = buf1.tostring()
-            image_texture = Texture.create(
-                size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
+            image_texture = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
@@ -99,20 +117,23 @@ class KivyCamera(Image):
             left *= 4
 
             # Draw a box around the face
-            cv2.rectangle(self.frame, (left, top), (right, bottom), (0, 0, 255), 2)
-            print(name)
+            cv2.rectangle(self.frame, (left, top), (right, bottom), (255, 255, 255), 2)
 
             # Draw a label with a name below the face
-            cv2.rectangle(self.frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+            cv2.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 255, 255), cv2.FILLED)
             font = cv2.FONT_HERSHEY_DUPLEX
-            cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+            cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
 
 
 class CamApp(App):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.capture = None
+
     def build(self):
         self.capture = cv2.VideoCapture(0)
-        my_camera = KivyCamera(capture=self.capture, fps=30)
-        return my_camera
+        face_recognition_camera = KivyCamera(capture=self.capture, fps=30)
+        return face_recognition_camera
 
     def on_stop(self):
         # without this, app will not exit even if the window is closed
