@@ -5,27 +5,24 @@ from kivy.graphics.texture import Texture
 import face_recognition
 import cv2
 import numpy as np
-
 from threading import Lock, Thread
 
 
-class SingletonMeta(type):
-    """
-    Thread-safe implementation of Singleton.
-    """
-
-    _instances = {}
+class KivyCamera(Image):
+    _instance = None
     _lock: Lock = Lock()
 
-    def __call__(cls, *args, **kwargs):
-        with cls._lock:
-            if cls not in cls._instances:
-                instance = super().__call__(*args, **kwargs)
-                cls._instances[cls] = instance
-        return cls._instances[cls]
+    def __new__(cls, *args, **kwargs):
+        """
+        Thread Safe Singleton
+        """
+        if not cls._instance:
+            with cls._lock:
+                if not cls._instance:
+                    cls._instance = super(KivyCamera, cls).__new__(cls)
+        return cls._instance
 
-class KivyCamera(Image):
-    def __init__(self, capture, fps, **kwargs):
+    def __init__(self, capture, fps, **kwargs) -> None:
         super(KivyCamera, self).__init__(**kwargs)
         self.frame = None
         self.ret = None
@@ -39,12 +36,11 @@ class KivyCamera(Image):
         if self.ret:
             # convert it to texture
             buf1 = cv2.flip(self.frame, 0)
-            buf = buf1.tostring()
+            buf = buf1.tobytes()
             image_texture = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
-
 
     def load_data(self):
         # TODO: - make this function return true if the person was recognized, else return false.
@@ -78,10 +74,10 @@ class KivyCamera(Image):
         # Only process every other frame of video to save time
         if self.process_this_frame:
             # Resize frame of video to 1/4 size for faster face recognition processing
-            self.small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
+            small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
 
             # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
-            self.rgb_small_frame = self.small_frame[:, :, ::-1]
+            self.rgb_small_frame = small_frame[:, :, ::-1]
 
             # Find all the faces and face encodings in the current frame of video
             self.face_locations = face_recognition.face_locations(self.rgb_small_frame)
@@ -125,20 +121,49 @@ class KivyCamera(Image):
             cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
 
 
-class CamApp(App):
+class SmartCamApp(App):
+    """
+    The main frame class
+    """
+    _instance = None
+    _lock: Lock = Lock()
+
+    def __new__(cls, *args, **kwargs):
+        """
+        Thread Safe Singleton
+        """
+        if not cls._instance:
+            with cls._lock:
+                if not cls._instance:
+                    cls._instance = super(SmartCamApp, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.capture = None
+        self._capture = None
 
     def build(self):
+        """
+        :return:Integrated open-cv webcam into a kivy user interface
+        """
         self.capture = cv2.VideoCapture(0)
         face_recognition_camera = KivyCamera(capture=self.capture, fps=30)
         return face_recognition_camera
 
+    @property
+    def capture(self):
+        return self._capture
+
+    @capture.setter
+    def capture(self, capture):
+        self._capture = capture
+
     def on_stop(self):
-        # without this, app will not exit even if the window is closed
+        """
+        Without this method, app will not exit even if the window is closed
+        """
         self.capture.release()
 
 
 if __name__ == '__main__':
-    CamApp().run()
+    SmartCamApp().run()
