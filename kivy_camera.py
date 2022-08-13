@@ -28,7 +28,7 @@ class KivyCamera(Image):
         super(KivyCamera, self).__init__(**kwargs)
         self.frame = None
         self.ret = None
-        self.load_data()
+        self._load_data()
         self.capture = capture
         Clock.schedule_interval(self._update, 1.0 / fps)
 
