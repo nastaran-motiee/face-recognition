@@ -47,7 +47,7 @@ class KivyCamera(Image):
             # display image from the texture
             self.texture = image_texture
 
-    def load_data(self):
+    def _load_data(self):
         # TODO: - make this function return true if the person was recognized, else return false.
         #       - write pydoc
 
