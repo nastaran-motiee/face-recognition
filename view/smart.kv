@@ -1,18 +1,31 @@
 #:kivy 2.1.0
 <KivyCamera>:
-    canvas:
-        Rectangle:
-            pos: self.center_x - 5, 0
-            size: 10, self.height
+   BoxLayout:
+      orientation: 'horizontal'
+      size: root.width, root.height
+   Button:
+      id: KivyCamera_verify_btn
+      text: 'Verify'
+      size: root.width , 30
+      pos: 0, 0
+      background_color: .0, .58, .38, .8
 
-    Label:
-        font_size: 70
-        center_x: root.width / 4
-        top: root.top - 50
-        text: "0"
 
-    Label:
-        font_size: 70
-        center_x: root.width * 3 / 4
-        top: root.top - 50
-        text: "0"
+
+   ProgressBar:
+      id: KivyCamera_vertical_progress_bar
+      orientation: 'vertical'
+      value: 0
+      min: 0
+      max: 100
+      size: root.width /2 ,10
+      pos: root.width/4, root.height /2
+
+
+
+
+
+
+
+
+

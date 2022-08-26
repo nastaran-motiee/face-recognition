@@ -31,13 +31,14 @@ class KivyCamera(Image):
         self._load_data()
         self.capture = capture
         Clock.schedule_interval(self._update, 1.0 / fps)
+        self._set_action_performance()
 
     def _update(self, dt):
         """
         updates the captured video from open-cv each 30 sec
         """
         self.ret, self.frame = self.capture.read()
-        self._identity_check()
+        # self._identity_check()
         if self.ret:
             # convert it to texture
             buf1 = cv2.flip(self.frame, 0)
@@ -75,7 +76,8 @@ class KivyCamera(Image):
         self.face_names = []
         self.process_this_frame = True
 
-    def _identity_check(self):
+    def _identity_check(self, action_listener):
+
         """
         checks the identity of the person which is in front of the camera
         if the person is recognized - shows the name of the person
@@ -93,7 +95,8 @@ class KivyCamera(Image):
             self.face_locations = face_recognition.face_locations(self.rgb_small_frame)
             self.face_encodings = face_recognition.face_encodings(self.rgb_small_frame, self.face_locations)
 
-            self.face_names = []
+            face_names = []
+
             for self.face_encoding in self.face_encodings:
                 # See if the face is a match for the known face(s)
                 self.matches = face_recognition.compare_faces(self.known_face_encodings, self.face_encoding)
@@ -110,22 +113,31 @@ class KivyCamera(Image):
                 if self.matches[self.best_match_index]:
                     name = self.known_face_names[self.best_match_index]
 
-                self.face_names.append(name)
+                face_names.append(name)
+                print(face_names)
 
-        self.process_this_frame = not self.process_this_frame
+                if len(face_names) != 0:
+                    return False
 
-        # Display the results
-        for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
-            # Scale back up face locations since the frame we detected in was scaled to 1/4 size
-            top *= 4
-            right *= 4
-            bottom *= 4
-            left *= 4
+                # Display the results in a rectangle
+                # for (top, right, bottom, left), name in zip(self.face_locations, face_names):
+                #    # Scale back up face locations since the frame we detected in was scaled to 1/4 size
+                #    top *= 4
+                #    right *= 4
+                #    bottom *= 4
+                #    left *= 4
 
-            # Draw a box around the face
-            cv2.rectangle(self.frame, (left, top), (right, bottom), (255, 255, 255), 2)
+                #    # Draw a box around the face
+                #    cv2.rectangle(self.frame, (left, top), (right, bottom), (255, 255, 255), 2)
 
-            # Draw a label with a name below the face
-            cv2.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 255, 255), cv2.FILLED)
-            font = cv2.FONT_HERSHEY_DUPLEX
-            cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
+                #    # Draw a label with a name below the face
+                #    cv2.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 255, 255), cv2.FILLED)
+                #    font = cv2.FONT_HERSHEY_DUPLEX
+                #    cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
+
+    def _set_action_performance(self):
+        """
+        sets the actions performances for KivyCamera Class widgets
+        """
+        identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
+        self.ids.KivyCamera_verify_btn.bind(on_press=identification_event)

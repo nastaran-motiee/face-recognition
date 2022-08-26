@@ -1,10 +1,14 @@
+import kivy
 from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.widget import Widget
 from threading import Lock, Thread
 import cv2
 from kivy_camera import KivyCamera
+from kivy.uix.progressbar import ProgressBar
 
 
-class SmartCamApp(App):
+class SmartApp(App):
     """
     The main application
     """
@@ -18,11 +22,12 @@ class SmartCamApp(App):
         if not cls._instance:
             with cls._lock:
                 if not cls._instance:
-                    cls._instance = super(SmartCamApp, cls).__new__(cls)
+                    cls._instance = super(SmartApp, cls).__new__(cls)
         return cls._instance
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        Builder.load_file('view/smart.kv')
         self._capture = None
 
     def build(self):
@@ -30,7 +35,7 @@ class SmartCamApp(App):
         :return:Integrated open-cv webcam into a kivy user interface
         """
         self.capture = cv2.VideoCapture(0)
-        face_recognition_camera = KivyCamera(capture=self.capture, fps=30)
+        face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
         return face_recognition_camera
 
     @property
@@ -49,4 +54,4 @@ class SmartCamApp(App):
 
 
 if __name__ == '__main__':
-    SmartCamApp().run()
+    SmartApp().run()
