@@ -5,8 +5,6 @@ from kivy.uix.widget import Widget
 from threading import Lock, Thread
 import cv2
 from kivy_camera import KivyCamera
-from kivy.uix.progressbar import ProgressBar
-
 
 
 class SmartApp(App):
@@ -52,7 +50,6 @@ class SmartApp(App):
         """
         Without this method, app will not exit even if the window is closed
         """
-
         self.capture.release()
 
 
