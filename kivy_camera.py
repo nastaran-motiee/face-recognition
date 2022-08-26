@@ -54,8 +54,10 @@ class KivyCamera(Image):
             self.texture = image_texture
 
     def _load_data(self):
-        # TODO: - make this function return true if the person was recognized, else return false.
-        #       - write pydoc
+        """
+        Loads the necessary data for the application to run
+        :return: None
+        """
 
         # Load a sample picture and learn how to recognize it.
         self.obama_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
@@ -153,12 +155,10 @@ class KivyCamera(Image):
         :param action_listener: btn_obj
         :return: None
         """
-
         self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
 
     def _set_action_performance(self):
         """
         sets the actions performances for KivyCamera Class widgets
         """
-
         self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)

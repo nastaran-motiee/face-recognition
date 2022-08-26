@@ -34,10 +34,20 @@ class VoiceAssistant:
         self.engine.setProperty('voice', self.voices[1].id)
 
     def speak(self, audio):
+        """
+        Makes the engine to speak
+        :param audio: String for the engine speech
+        :return: None
+        """
         self.engine.say(audio)
         self.engine.runAndWait()
 
     def hello(self, name):
+        """
+        Greets the user according to the hour
+        :param name: name of user
+        :return:none
+        """
         try:
             hour = int(datetime.datetime.now().hour)
             if name != 'Unknown':
@@ -51,12 +61,37 @@ class VoiceAssistant:
                     self.speak(f"Good Evening{name}")
 
                 self.speak("Do you need to get home?")
+
+                self._take_command()
             else:
                 self.speak("Sorry, can't recognize you")
         except:
             print("Already in process...")
 
+    def _take_command(self):
+        """
+        Takes voice instructions from the user
+        :return: command
+        """
+        r = sr.Recognizer()
 
+        with sr.Microphone() as source:
+
+            print("Listening...")
+            r.pause_threshold = 1
+            audio = r.listen(source)
+
+        try:
+            print("Recognizing...")
+            query = r.recognize_google(audio, language='en-in')
+            print(f"User said: {query}\n")
+
+        except Exception as e:
+            print(e)
+            print("Unable to Recognize your voice.")
+            return "None"
+
+        return query
 
 
 
