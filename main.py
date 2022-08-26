@@ -8,6 +8,7 @@ from kivy_camera import KivyCamera
 from kivy.uix.progressbar import ProgressBar
 
 
+
 class SmartApp(App):
     """
     The main application
@@ -27,6 +28,7 @@ class SmartApp(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.face_recognition_camera = None
         Builder.load_file('view/smart.kv')
         self._capture = None
 
@@ -35,8 +37,8 @@ class SmartApp(App):
         :return:Integrated open-cv webcam into a kivy user interface
         """
         self.capture = cv2.VideoCapture(0)
-        face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
-        return face_recognition_camera
+        self.face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
+        return self.face_recognition_camera
 
     @property
     def capture(self):
@@ -50,6 +52,7 @@ class SmartApp(App):
         """
         Without this method, app will not exit even if the window is closed
         """
+
         self.capture.release()
 
 

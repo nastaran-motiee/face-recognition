@@ -5,6 +5,8 @@ import face_recognition
 from threading import Lock, Thread
 import numpy as np
 import cv2
+from voice_assistant import VoiceAssistant
+import threading
 
 
 class KivyCamera(Image):
@@ -26,11 +28,14 @@ class KivyCamera(Image):
 
     def __init__(self, capture, fps, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
+        self.thread_voice_assistant = None
+        self.identification_event = None
         self.frame = None
         self.ret = None
         self._load_data()
         self.capture = capture
         Clock.schedule_interval(self._update, 1.0 / fps)
+        self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
 
     def _update(self, dt):
@@ -76,7 +81,7 @@ class KivyCamera(Image):
         self.face_names = []
         self.process_this_frame = True
 
-    def _identity_check(self, action_listener):
+    def _identity_check(self, dt):
 
         """
         checks the identity of the person which is in front of the camera
@@ -114,9 +119,15 @@ class KivyCamera(Image):
                     name = self.known_face_names[self.best_match_index]
 
                 face_names.append(name)
+
                 print(face_names)
 
                 if len(face_names) != 0:
+                    self.identification_event.cancel()
+
+                    self.thread_voice_assistant = threading.Thread(target=self.voice_assistant.hello, args=(name,))
+                    self.thread_voice_assistant.start()
+
                     return False
 
                 # Display the results in a rectangle
@@ -135,9 +146,19 @@ class KivyCamera(Image):
                 #    font = cv2.FONT_HERSHEY_DUPLEX
                 #    cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
 
+    def _verify_button_action(self, action_listener):
+        """
+        -Schedules identification
+        -used when verify button is pressed
+        :param action_listener: btn_obj
+        :return: None
+        """
+
+        self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
+
     def _set_action_performance(self):
         """
         sets the actions performances for KivyCamera Class widgets
         """
-        identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
-        self.ids.KivyCamera_verify_btn.bind(on_press=identification_event)
+
+        self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)
