@@ -25,12 +25,28 @@ from bs4 import BeautifulSoup
 import win32com.client as wincl
 from urllib.request import urlopen
 import pyaudio
-
-from kivy_camera import KivyCamera
+from threading import Lock
 
 
 class VoiceAssistant:
-    def __init__(self):
+    """
+     Voice Assistant Class
+    """
+    _instance = None
+    _lock: Lock = Lock()
+
+    def __new__(cls, *args, **kwargs):
+        """
+        Thread Safe Singleton
+        """
+        if not cls._instance:
+            with cls._lock:
+                if not cls._instance:
+                    cls._instance = super(VoiceAssistant, cls).__new__(cls)
+        return cls._instance
+
+    def __init__(self, **kwargs):
+        super(VoiceAssistant, self).__init__(**kwargs)
         self.engine = pyttsx3.init('sapi5')
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
@@ -95,6 +111,3 @@ class VoiceAssistant:
             return "None"
 
         return query
-
-
-

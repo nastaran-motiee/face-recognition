@@ -2,12 +2,11 @@ from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import face_recognition
-from threading import Lock, Thread
+from threading import Lock
 import numpy as np
 import cv2
 from voice_assistant import VoiceAssistant
-import threading
-
+from concurrent.futures import ThreadPoolExecutor
 
 
 class KivyCamera(Image):
@@ -29,7 +28,7 @@ class KivyCamera(Image):
 
     def __init__(self, capture, fps, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
-        self.thread_voice_assistant = None
+        self.executor = ThreadPoolExecutor(1)
         self.identification_event = None
         self.frame = None
         self.ret = None
@@ -127,9 +126,7 @@ class KivyCamera(Image):
 
                 if len(face_names) != 0:
                     self.identification_event.cancel()
-
-                    self.thread_voice_assistant = threading.Thread(target=self.voice_assistant.hello, args=(name,))
-                    self.thread_voice_assistant.start()
+                    self.executor.submit(self.voice_assistant.hello, name)
 
                     return False
 
