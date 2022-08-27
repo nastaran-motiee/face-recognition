@@ -1,8 +1,5 @@
-import kivy
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.widget import Widget
-from threading import Lock, Thread
 import cv2
 from kivy_camera import KivyCamera
 
