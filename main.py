@@ -8,25 +8,8 @@ from kivy_camera import KivyCamera
 
 
 class SmartApp(App):
-    """
-    The main application
-    """
-    _instance = None
-    _lock: Lock = Lock()
-
-    def __new__(cls, *args, **kwargs):
-        """
-        Thread Safe Singleton
-        """
-        if not cls._instance:
-            with cls._lock:
-                if not cls._instance:
-                    cls._instance = super(SmartApp, cls).__new__(cls)
-        return cls._instance
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.face_recognition_camera = None
         Builder.load_file('view/smart.kv')
         self._capture = None
 
@@ -35,8 +18,8 @@ class SmartApp(App):
         :return:Integrated open-cv webcam into a kivy user interface
         """
         self.capture = cv2.VideoCapture(0)
-        self.face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
-        return self.face_recognition_camera
+        face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
+        return face_recognition_camera
 
     @property
     def capture(self):

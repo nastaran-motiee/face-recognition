@@ -9,6 +9,7 @@ from voice_assistant import VoiceAssistant
 import threading
 
 
+
 class KivyCamera(Image):
     """
     kivy camera - gets open-cv video capture as argument and integrates it into kivy camera
@@ -34,16 +35,16 @@ class KivyCamera(Image):
         self.ret = None
         self._load_data()
         self.capture = capture
-        Clock.schedule_interval(self._update, 1.0 / fps)
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
+        Clock.schedule_interval(self._update, 1.0 / fps)
 
     def _update(self, dt):
         """
         updates the captured video from open-cv each 30 sec
         """
         self.ret, self.frame = self.capture.read()
-        # self._identity_check()
+
         if self.ret:
             # convert it to texture
             buf1 = cv2.flip(self.frame, 0)
@@ -104,9 +105,9 @@ class KivyCamera(Image):
 
             face_names = []
 
-            for self.face_encoding in self.face_encodings:
+            for face_encoding in self.face_encodings:
                 # See if the face is a match for the known face(s)
-                self.matches = face_recognition.compare_faces(self.known_face_encodings, self.face_encoding)
+                self.matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
                 name = "Unknown"
 
                 # # If a match was found in known_face_encodings, just use the first one.
@@ -115,7 +116,7 @@ class KivyCamera(Image):
                 #     name = known_face_names[first_match_index]
 
                 # Or instead, use the known face with the smallest distance to the new face
-                self.face_distances = face_recognition.face_distance(self.known_face_encodings, self.face_encoding)
+                self.face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
                 self.best_match_index = np.argmin(self.face_distances)
                 if self.matches[self.best_match_index]:
                     name = self.known_face_names[self.best_match_index]

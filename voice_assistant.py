@@ -26,6 +26,8 @@ import win32com.client as wincl
 from urllib.request import urlopen
 import pyaudio
 
+from kivy_camera import KivyCamera
+
 
 class VoiceAssistant:
     def __init__(self):
@@ -43,6 +45,7 @@ class VoiceAssistant:
         self.engine.runAndWait()
 
     def hello(self, name):
+
         """
         Greets the user according to the hour
         :param name: name of user
