@@ -1,6 +1,8 @@
 from kivy.app import App
 from kivy.lang import Builder
 import cv2
+
+import model.db
 from kivy_camera import KivyCamera
 
 
@@ -34,4 +36,5 @@ class SmartApp(App):
 
 
 if __name__ == '__main__':
+    print(model.db.get_db().list_database_names())
     SmartApp().run()
