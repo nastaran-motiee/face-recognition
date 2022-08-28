@@ -36,5 +36,4 @@ class SmartApp(App):
 
 
 if __name__ == '__main__':
-    print(model.db.get_db().list_database_names())
     SmartApp().run()
