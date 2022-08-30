@@ -5,22 +5,6 @@ from threading import Lock
 
 
 class VoiceAssistant:
-    """
-     Voice Assistant Class
-    """
-    _instance = None
-    _lock: Lock = Lock()
-
-    def __new__(cls, *args, **kwargs):
-        """
-        Thread Safe Singleton
-        """
-        if not cls._instance:
-            with cls._lock:
-                if not cls._instance:
-                    cls._instance = super(VoiceAssistant, cls).__new__(cls)
-        return cls._instance
-
     def __init__(self, **kwargs):
         super(VoiceAssistant, self).__init__(**kwargs)
         self.engine = pyttsx3.init('sapi5')

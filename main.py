@@ -1,9 +1,8 @@
 from kivy.app import App
 from kivy.lang import Builder
 import cv2
-
-import model.db
 from kivy_camera import KivyCamera
+from model.mongo_db import Model
 
 
 class SmartApp(App):
@@ -36,4 +35,6 @@ class SmartApp(App):
 
 
 if __name__ == '__main__':
+    Model.add_user("nas","a","a")
+
     SmartApp().run()

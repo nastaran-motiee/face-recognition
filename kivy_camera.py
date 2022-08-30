@@ -9,22 +9,12 @@ from voice_assistant import VoiceAssistant
 from concurrent.futures import ThreadPoolExecutor
 
 
+
 class KivyCamera(Image):
     """
-    kivy camera - gets open-cv video capture as argument and integrates it into kivy camera
+    kivy camera - gets open-cv video capture as argument and integrates it into kivy camera.
+                - when the "Verify" button is pressed, the _identity_check method whill be invoked.
     """
-    _instance = None
-    _lock: Lock = Lock()
-
-    def __new__(cls, *args, **kwargs):
-        """
-        Thread Safe Singleton
-        """
-        if not cls._instance:
-            with cls._lock:
-                if not cls._instance:
-                    cls._instance = super(KivyCamera, cls).__new__(cls)
-        return cls._instance
 
     def __init__(self, capture, fps, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
@@ -60,11 +50,11 @@ class KivyCamera(Image):
         """
 
         # Load a sample picture and learn how to recognize it.
-        self.obama_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
+        self.obama_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
         self.obama_face_encoding = face_recognition.face_encodings(self.obama_image)[0]
 
         # Load a second sample picture and learn how to recognize it.
-        self.biden_image = face_recognition.load_image_file("images/NastaranMotiee.jpg")
+        self.biden_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
         self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
 
         # Create arrays of known face encodings and their names
