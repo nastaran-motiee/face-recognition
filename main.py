@@ -13,7 +13,8 @@ class SmartApp(App):
 
     def build(self):
         """
-        :return:Integrated open-cv webcam into a kivy user interface
+        Integrates open-cv webcam into a kivy user interface and returns it as a root object
+        :return:root object
         """
         self.capture = cv2.VideoCapture(0)
         face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
@@ -35,6 +36,4 @@ class SmartApp(App):
 
 
 if __name__ == '__main__':
-    Model.add_user("nas","a","a")
-
     SmartApp().run()
