@@ -2,7 +2,7 @@ from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import face_recognition
-from threading import Lock
+
 import numpy as np
 import cv2
 
@@ -17,17 +17,18 @@ class KivyCamera(Image):
                 - when the "Verify" button is pressed, the _identity_check method whill be invoked.
     """
 
-    def __init__(self, capture, fps, **kwargs):
+    def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
         self.executor = ThreadPoolExecutor(1)
         self.identification_event = None
         self.frame = None
         self.ret = None
         self._load_data()
-        self.capture = capture
+        self.capture = cv2.VideoCapture(0)
+        self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
-        Clock.schedule_interval(self._update, 1.0 / fps)
+        Clock.schedule_interval(self._update, 1.0 / self.fps)
 
     def _update(self, dt):
         """
@@ -51,8 +52,7 @@ class KivyCamera(Image):
         """
 
         # Load a sample picture and learn how to recognize it.
-        self.obama_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
-        self.obama_face_encoding = face_recognition.face_encodings(self.obama_image)[0]
+
 
         # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 
@@ -139,3 +139,6 @@ class KivyCamera(Image):
         sets the actions performances for KivyCamera Class widgets
         """
         self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)
+
+    def stop(self):
+        self.capture.release()

@@ -16,23 +16,17 @@ class SmartApp(App):
         Integrates open-cv webcam into a kivy user interface and returns it as a root object
         :return:root object
         """
-        self.capture = cv2.VideoCapture(0)
-        face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
-        return face_recognition_camera
 
-    @property
-    def capture(self):
-        return self._capture
+        self.face_recognition_camera = KivyCamera()
+        return self.face_recognition_camera
 
-    @capture.setter
-    def capture(self, capture):
-        self._capture = capture
+
 
     def on_stop(self):
         """
         Without this method, app will not exit even if the window is closed
         """
-        self.capture.release()
+        self.face_recognition_camera.stop()
 
 
 if __name__ == '__main__':
