@@ -2,10 +2,8 @@ from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import face_recognition
-
 import numpy as np
 import cv2
-
 from model.mongo_db import Model
 from voice_assistant import VoiceAssistant
 from concurrent.futures import ThreadPoolExecutor

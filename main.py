@@ -1,16 +1,18 @@
 from kivy.app import App
 from kivy.lang import Builder
-import cv2
 from kivy_camera import KivyCamera
-from model.mongo_db import Model
+from kivy.config import Config
+import pyautogui
 
 
 class SmartApp(App):
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
         self.face_recognition_camera = None
+        width, height = pyautogui.size()  # Get the width and height of the screen
+        Config.set('graphics', 'width', str(width // 4))  # Set the window width
+        Config.set('graphics', 'height', str(height - height // 3))  # Set the window height
         Builder.load_file('view/smart.kv')
-        self._capture = None
 
     def build(self):
         """
