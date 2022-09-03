@@ -25,6 +25,7 @@ class KivyCamera(Image):
         self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
@@ -64,8 +65,6 @@ class KivyCamera(Image):
         self.known_face_encodings = []
         for face_encoding_dict in known_face_encodings_from_mongo:
             self.known_face_encodings.append(np.array(face_encoding_dict["face_encoding"]))
-
-        print(self.known_face_encodings)
 
         self.known_face_names = [
             "Nastaran Motiee",

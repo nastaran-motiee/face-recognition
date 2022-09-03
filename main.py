@@ -8,10 +8,13 @@ import pyautogui
 class SmartApp(App):
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
+
         self.face_recognition_camera = None
         width, height = pyautogui.size()  # Get the width and height of the screen
-        Config.set('graphics', 'width', str(width // 4))  # Set the window width
-        Config.set('graphics', 'height', str(height - height // 3))  # Set the window height
+        self._window_width = width // 4
+        self._window_height = height - height // 3
+        Config.set('graphics', 'width', str(self.window_width))  # Set the window width
+        Config.set('graphics', 'height', str(self.window_height))  # Set the window height
         Builder.load_file('view/smart.kv')
 
     def build(self):
@@ -20,6 +23,7 @@ class SmartApp(App):
         :return:root object
         """
         self.face_recognition_camera = KivyCamera()
+
         return self.face_recognition_camera
 
     def on_stop(self):
@@ -27,6 +31,14 @@ class SmartApp(App):
         Without this method, app will not exit even if the window is closed
         """
         self.face_recognition_camera.stop()
+
+    @property
+    def window_width(self) -> int:
+        return self._window_width
+
+    @property
+    def window_height(self) -> int:
+        return self._window_height
 
 
 if __name__ == '__main__':
