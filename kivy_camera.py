@@ -24,7 +24,9 @@ class KivyCamera(Image):
         self.frame = None
         self.ret = None
         self._load_data()
-        self.capture = cv2.VideoCapture(0)
+        self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
@@ -52,7 +54,6 @@ class KivyCamera(Image):
         """
 
         # Load a sample picture and learn how to recognize it.
-
 
         # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 

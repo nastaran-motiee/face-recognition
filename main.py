@@ -7,7 +7,8 @@ from model.mongo_db import Model
 
 class SmartApp(App):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(SmartApp, self).__init__(**kwargs)
+        self.face_recognition_camera = None
         Builder.load_file('view/smart.kv')
         self._capture = None
 
@@ -16,11 +17,8 @@ class SmartApp(App):
         Integrates open-cv webcam into a kivy user interface and returns it as a root object
         :return:root object
         """
-
         self.face_recognition_camera = KivyCamera()
         return self.face_recognition_camera
-
-
 
     def on_stop(self):
         """

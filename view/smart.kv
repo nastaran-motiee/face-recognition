@@ -1,14 +1,37 @@
 #:kivy 2.1.0
 <KivyCamera>:
-   BoxLayout:
-      orientation: 'horizontal'
-      size: root.width, root.height
-   Button:
-      id: KivyCamera_verify_btn
-      text: 'Verify'
-      size: root.width , 30
-      pos: 0, 0
-      background_color: 1 , 0, .6, .4
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.width, root.height
+
+    Button:
+        id: KivyCamera_verify_btn
+        text: 'Verify'
+        size: root.width , 50
+        pos: 0, 0
+        background_color: 0, 0, 0, 1
+
+
+    Button:
+        id: KivyCamera_add_btn
+        text: '+'
+        size: 40, 40
+        pos: root.width - 50, root.height - 50
+        background_color: 0, 0, 0, 1
+
+
+
+
+
+
+
 
 
 
