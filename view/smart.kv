@@ -1,4 +1,6 @@
 #:kivy 2.1.0
+
+#:set button_color (0, 0, 0, 1)
 <KivyCamera>:
     canvas.before:
         Color:
@@ -16,7 +18,7 @@
         text: 'Verify'
         size: root.width , 50
         pos: 0, 0
-        background_color: 0, 0, 0, 1
+        background_color: button_color
 
 
     Button:
@@ -24,7 +26,7 @@
         text: '+'
         size: 40, 40
         pos: root.width - 50, root.height - 50
-        background_color: 0, 0, 0, 1
+        background_color: button_color
 
 
 

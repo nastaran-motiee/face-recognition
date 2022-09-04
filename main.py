@@ -1,14 +1,16 @@
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.properties import VariableListProperty
+
 from kivy_camera import KivyCamera
 from kivy.config import Config
 import pyautogui
 
 
 class SmartApp(App):
+
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
-
         self.face_recognition_camera = None
         width, height = pyautogui.size()  # Get the width and height of the screen
         self._window_width = width // 4

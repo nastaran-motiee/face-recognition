@@ -1,3 +1,5 @@
+import sys
+
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
@@ -17,7 +19,8 @@ class KivyCamera(Image):
 
     def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
-        self.executor = ThreadPoolExecutor(1)
+        self.executor = ThreadPoolExecutor(2)
+
         self.identification_event = None
         self.frame = None
         self.ret = None
@@ -25,7 +28,6 @@ class KivyCamera(Image):
         self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
@@ -120,7 +122,10 @@ class KivyCamera(Image):
 
                 if len(face_names) != 0:
                     self.identification_event.cancel()
+
                     self.executor.submit(self.voice_assistant.hello, name)
+
+
                     return False
 
     def _verify_button_action(self, action_listener):
