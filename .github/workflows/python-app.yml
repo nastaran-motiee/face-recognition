@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: Windows 10 64-bit
 
     steps:
     - uses: actions/checkout@v3
