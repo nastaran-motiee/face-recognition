@@ -33,29 +33,35 @@ class Model:
         return cls._db_instance
 
     @classmethod
-    def add_user(cls, name, email, hashedpw):
+    def add_user(cls, name: str, face_encoding, floor_number: int):
         """
-        Given a name, email and password, inserts a document with those credentials
-        to the `users` collection.
-        """
-
-        """
-        Ticket: Durable Writes
-
-        Please increase the durability of this method by using a non-default write
-        concern with ``insert_one``.
+        Given a name, face_encoding and the floor number, inserts a document with those credentials
+        to the `users_info` collection.
         """
 
         try:
-            # TODO: User Management
-            # Insert a user with the "name", "email", and "password" fields.
-            # TODO: Durable Writes
-            # Use a more durable Write Concern for this operation.
-            Model.get_instance().users.insert_one({
+            Model.get_instance().users_info.insert_one({
                 "name": name,
-                "email": email,
-                "password": hashedpw
+                "face_encoding": face_encoding,
+                "floor_number": floor_number
             })
             return {"success": True}
         except DuplicateKeyError:
-            return {"error": "A user with the given email already exists."}
+            return {"error": "A user with the given face_encoding already exists."}
+
+    @classmethod
+    def get_all_face_encodings(cls):
+        """
+        :return: all face encodings in the database
+        """
+        m_filter = {}
+        project = {
+            '_id': 0,
+            'face_encoding': 1
+        }
+
+        result = Model.get_instance().users_info.find(
+            filter=m_filter,
+            projection=project
+        )
+        return list(result)

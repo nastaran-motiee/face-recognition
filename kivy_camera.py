@@ -1,13 +1,14 @@
+import sys
+
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import face_recognition
-from threading import Lock
 import numpy as np
 import cv2
+from model.mongo_db import Model
 from voice_assistant import VoiceAssistant
 from concurrent.futures import ThreadPoolExecutor
-
 
 
 class KivyCamera(Image):
@@ -16,17 +17,21 @@ class KivyCamera(Image):
                 - when the "Verify" button is pressed, the _identity_check method whill be invoked.
     """
 
-    def __init__(self, capture, fps, **kwargs):
+    def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
-        self.executor = ThreadPoolExecutor(1)
+        self.executor = ThreadPoolExecutor(2)
+
         self.identification_event = None
         self.frame = None
         self.ret = None
         self._load_data()
-        self.capture = capture
+        self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         self._set_action_performance()
-        Clock.schedule_interval(self._update, 1.0 / fps)
+        Clock.schedule_interval(self._update, 1.0 / self.fps)
 
     def _update(self, dt):
         """
@@ -50,18 +55,19 @@ class KivyCamera(Image):
         """
 
         # Load a sample picture and learn how to recognize it.
-        self.obama_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
-        self.obama_face_encoding = face_recognition.face_encodings(self.obama_image)[0]
+
+        # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 
         # Load a second sample picture and learn how to recognize it.
         self.biden_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
         self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
 
-        # Create arrays of known face encodings and their names
-        self.known_face_encodings = [
-            self.obama_face_encoding,
-            self.biden_face_encoding
-        ]
+        # get all face_encodings from DB
+        known_face_encodings_from_mongo = Model.get_all_face_encodings()
+        self.known_face_encodings = []
+        for face_encoding_dict in known_face_encodings_from_mongo:
+            self.known_face_encodings.append(np.array(face_encoding_dict["face_encoding"]))
+
         self.known_face_names = [
             "Nastaran Motiee",
             "Joe Biden"
@@ -116,25 +122,11 @@ class KivyCamera(Image):
 
                 if len(face_names) != 0:
                     self.identification_event.cancel()
+
                     self.executor.submit(self.voice_assistant.hello, name)
 
+
                     return False
-
-                # Display the results in a rectangle
-                # for (top, right, bottom, left), name in zip(self.face_locations, face_names):
-                #    # Scale back up face locations since the frame we detected in was scaled to 1/4 size
-                #    top *= 4
-                #    right *= 4
-                #    bottom *= 4
-                #    left *= 4
-
-                #    # Draw a box around the face
-                #    cv2.rectangle(self.frame, (left, top), (right, bottom), (255, 255, 255), 2)
-
-                #    # Draw a label with a name below the face
-                #    cv2.rectangle(self.frame, (left, bottom - 35), (right, bottom), (255, 255, 255), cv2.FILLED)
-                #    font = cv2.FONT_HERSHEY_DUPLEX
-                #    cv2.putText(self.frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
 
     def _verify_button_action(self, action_listener):
         """
@@ -150,3 +142,6 @@ class KivyCamera(Image):
         sets the actions performances for KivyCamera Class widgets
         """
         self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)
+
+    def stop(self):
+        self.capture.release()

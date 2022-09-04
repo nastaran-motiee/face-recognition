@@ -1,40 +1,47 @@
 from kivy.app import App
 from kivy.lang import Builder
-import cv2
+from kivy.properties import VariableListProperty
+
 from kivy_camera import KivyCamera
-from model.mongo_db import Model
+from kivy.config import Config
+import pyautogui
 
 
 class SmartApp(App):
+
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(SmartApp, self).__init__(**kwargs)
+        self.face_recognition_camera = None
+        width, height = pyautogui.size()  # Get the width and height of the screen
+        self._window_width = width // 4
+        self._window_height = height - height // 3
+        Config.set('graphics', 'width', str(self.window_width))  # Set the window width
+        Config.set('graphics', 'height', str(self.window_height))  # Set the window height
         Builder.load_file('view/smart.kv')
-        self._capture = None
 
     def build(self):
         """
-        :return:Integrated open-cv webcam into a kivy user interface
+        Integrates open-cv webcam into a kivy user interface and returns it as a root object
+        :return:root object
         """
-        self.capture = cv2.VideoCapture(0)
-        face_recognition_camera = KivyCamera(capture=self.capture, fps=33.)
-        return face_recognition_camera
+        self.face_recognition_camera = KivyCamera()
 
-    @property
-    def capture(self):
-        return self._capture
-
-    @capture.setter
-    def capture(self, capture):
-        self._capture = capture
+        return self.face_recognition_camera
 
     def on_stop(self):
         """
         Without this method, app will not exit even if the window is closed
         """
-        self.capture.release()
+        self.face_recognition_camera.stop()
+
+    @property
+    def window_width(self) -> int:
+        return self._window_width
+
+    @property
+    def window_height(self) -> int:
+        return self._window_height
 
 
 if __name__ == '__main__':
-    Model.add_user("nas","a","a")
-
     SmartApp().run()
