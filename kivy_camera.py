@@ -19,7 +19,7 @@ class KivyCamera(Image):
 
     def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
-        self.executor = ThreadPoolExecutor(2)
+        self.executor = ThreadPoolExecutor(1)
 
         self.identification_event = None
         self.frame = None
@@ -124,7 +124,6 @@ class KivyCamera(Image):
                     self.identification_event.cancel()
 
                     self.executor.submit(self.voice_assistant.hello, name)
-
 
                     return False
 
