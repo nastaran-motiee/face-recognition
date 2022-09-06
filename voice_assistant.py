@@ -27,25 +27,27 @@ class VoiceAssistant:
         :param name: name of user
         :return:none
         """
-        try:
-            hour = int(datetime.datetime.now().hour)
-            if name != 'Unknown':
-                if 0 <= hour < 12:
-                    self.speak(f"Good Morning{name}")
+        #   try:
+        hour = int(datetime.datetime.now().hour)
+        if name != 'Unknown':
+            if 0 <= hour < 12:
+                self.speak(f"Good Morning{name}")
 
-                elif 12 <= hour < 18:
-                    self.speak(f"Good Afternoon{name}")
+            elif 12 <= hour < 18:
+                self.speak(f"Good Afternoon{name}")
 
-                else:
-                    self.speak(f"Good Evening{name}")
-
-                self.speak("Do you need to get home?")
-
-                self._take_command()
             else:
-                self.speak("Sorry, can't recognize you")
-        except:
-            print("Already in process...")
+                self.speak(f"Good Evening{name}")
+
+            self.speak("Do you need to get home?")
+            self._take_command()
+
+        else:
+            self.speak("Sorry, can't recognize you")
+
+    #  except:
+    #      print("Already in process...")
+
 
     def _take_command(self):
         """
