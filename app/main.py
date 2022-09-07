@@ -1,8 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import VariableListProperty
 
-from kivy_camera import KivyCamera
+from app.kivy_camera import KivyCamera
 from kivy.config import Config
 import pyautogui
 

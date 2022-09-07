@@ -1,12 +1,10 @@
-import sys
-
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.graphics.texture import Texture
 import face_recognition
 import numpy as np
 import cv2
-from model.mongo_db import Model
+from app.model.mongo_db import Model
 from voice_assistant import VoiceAssistant
 from concurrent.futures import ThreadPoolExecutor
 
@@ -59,7 +57,7 @@ class KivyCamera(Image):
         # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 
         # Load a second sample picture and learn how to recognize it.
-        self.biden_image = face_recognition.load_image_file("./images/NastaranMotiee.jpg")
+        self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
         self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
 
         # get all face_encodings from DB
