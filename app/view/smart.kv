@@ -3,6 +3,9 @@
 #:set button_background_normal ''
 #:set button_color rgba('#1E2328')
 #:set main_frame_background_color rgba('#FFFFFF')
+#:set rectangle_button_height 80
+#:set square_button_height 50
+#:set button_margin 20
 
 <KivyCamera>:
     canvas.before:
@@ -18,9 +21,9 @@
 
     Button:
         id: KivyCamera_verify_btn
-        text: 'Verify'
-        size: root.width , 50
-        pos: 0, 0
+        text: 'Open Door'
+        size: root.width - 40, rectangle_button_height
+        pos: button_margin, KivyCamera_visitor_btn.height + 5 + button_margin
         background_normal: button_background_normal
         background_color: button_color
 
@@ -28,12 +31,18 @@
     Button:
         id: KivyCamera_add_btn
         text: '+'
-        size: 40, 40
-        pos: root.width - 50, root.height - 50
+        size: square_button_height, square_button_height
+        pos: root.width - 60, root.height - 60
         background_normal: button_background_normal
         background_color: button_color
 
-
+    Button:
+        id: KivyCamera_visitor_btn
+        text: "I'm a Visitor"
+        size: root.width - 40, rectangle_button_height
+        pos: button_margin, button_margin
+        background_normal: button_background_normal
+        background_color: button_color
 
 
 

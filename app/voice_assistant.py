@@ -1,7 +1,7 @@
-import pyttsx3
-import speech_recognition as sr
-import datetime
 from threading import Lock
+import pyttsx3
+import datetime
+import speech_recognition as sr
 
 
 class VoiceAssistant:
