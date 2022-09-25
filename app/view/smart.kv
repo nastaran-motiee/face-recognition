@@ -1,11 +1,16 @@
 #:kivy 2.1.0
 #:import rgba kivy.utils.get_color_from_hex
 #:set button_background_normal ''
-#:set button_color rgba('#1E2328')
+#:set button_color rgba('#5D4FFF')
 #:set main_frame_background_color rgba('#FFFFFF')
-#:set rectangle_button_height 80
 #:set square_button_height 50
 #:set button_margin 20
+
+
+<FloorButton@Button>:
+    size: self.parent.width - 40, 80
+    background_normal: ''
+    background_color: rgba('#5D4FFF')
 
 <KivyCamera>:
     canvas.before:
@@ -19,13 +24,12 @@
         orientation: 'horizontal'
         size: root.width, root.height
 
-    Button:
+
+    FloorButton:
         id: KivyCamera_verify_btn
-        text: 'Open Door'
-        size: root.width - 40, rectangle_button_height
+        text: 'Open Elevator'
         pos: button_margin, KivyCamera_visitor_btn.height + 5 + button_margin
-        background_normal: button_background_normal
-        background_color: button_color
+
 
 
     Button:
@@ -36,13 +40,11 @@
         background_normal: button_background_normal
         background_color: button_color
 
-    Button:
+    FloorButton:
         id: KivyCamera_visitor_btn
         text: "I'm a Visitor"
-        size: root.width - 40, rectangle_button_height
         pos: button_margin, button_margin
-        background_normal: button_background_normal
-        background_color: button_color
+
 
 
 

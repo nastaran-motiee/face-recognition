@@ -4,7 +4,7 @@ from kivy.graphics.texture import Texture
 import face_recognition
 import numpy as np
 import cv2
-from app.model.mongo_db import Model
+from model.mongo_db import Model
 from voice_assistant import VoiceAssistant
 from concurrent.futures import ThreadPoolExecutor
 
@@ -139,6 +139,7 @@ class KivyCamera(Image):
         sets the actions performances for KivyCamera Class widgets
         """
         self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)
+
 
     def stop(self):
         self.capture.release()

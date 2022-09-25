@@ -1,9 +1,9 @@
 from kivy.app import App
 from kivy.lang import Builder
-
-from app.kivy_camera import KivyCamera
+from kivy_camera import KivyCamera
 from kivy.config import Config
 import pyautogui
+from kivy.graphics import Rectangle, Color
 
 
 class SmartApp(App):
