@@ -1,63 +1,57 @@
 #:kivy 2.1.0
 #:import rgba kivy.utils.get_color_from_hex
-#:set button_background_normal ''
-#:set button_color rgba('#5D4FFF')
-#:set main_frame_background_color rgba('#FFFFFF')
-#:set square_button_height 50
-#:set button_margin 20
 
 
-<FloorButton@Button>:
-    size: self.parent.width - 40, 80
+<RoundedButton@Button>:
+    background_color: (0, 0, 0, 0)
     background_normal: ''
-    background_color: rgba('#5D4FFF')
+    canvas.before: 
+        Color:  
+            rgba: rgba('#5D4FFF') if self.state == 'normal' else rgba('#A49CFF')
+     
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [400]
+            
+            
+
+
+
+<SmartSystem>:
+    camera: face_recognition_camera
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+       
+        KivyCamera:
+            id: face_recognition_camera
+            size_hint: (1, 1)
+            
+            
+        GridLayout:
+            cols: 3
+            rows: 4
+            size_hint: (1, 1)
+            padding: 20
+            spacing: 20
+
+
+            RoundedButton:
+                id: KivyCamera_verify_btn
+                text: 'Open Elevator'
+               
+               
+            
+            RoundedButton:
+                id: KivyCamera_visitor_btn
+                text: "I'm a Visitor"
+                           
 
 <KivyCamera>:
-    canvas.before:
-        Color:
-            rgba: main_frame_background_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    size: self.size
+    
 
-    BoxLayout:
-        orientation: 'horizontal'
-        size: root.width, root.height
-
-
-    FloorButton:
-        id: KivyCamera_verify_btn
-        text: 'Open Elevator'
-        pos: button_margin, KivyCamera_visitor_btn.height + 5 + button_margin
-
-
-
-    Button:
-        id: KivyCamera_add_btn
-        text: '+'
-        size: square_button_height, square_button_height
-        pos: root.width - 60, root.height - 60
-        background_normal: button_background_normal
-        background_color: button_color
-
-    FloorButton:
-        id: KivyCamera_visitor_btn
-        text: "I'm a Visitor"
-        pos: button_margin, button_margin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
 
 
