@@ -28,7 +28,6 @@ class KivyCamera(Image):
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
-     #   self._set_action_performance()
         Clock.schedule_interval(self._update, 1.0 / self.fps)
 
     def _update(self, dt):
@@ -125,19 +124,13 @@ class KivyCamera(Image):
 
                     return False
 
-    def _verify_button_action(self, action_listener):
+    def verify_button_action(self):
         """
         -Schedules identification
         -used when verify button is pressed
-        :param action_listener: btn_obj
         :return: None
         """
         self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
 
-   # def _set_action_performance(self):
-   #     """
-   #     sets the actions performances for KivyCamera Class widgets
-   #     """
-   #     self.ids.KivyCamera_verify_btn.bind(on_press=self._verify_button_action)
     def stop(self):
         self.capture.release()

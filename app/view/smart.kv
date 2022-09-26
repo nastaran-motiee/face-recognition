@@ -7,7 +7,7 @@
     background_normal: ''
     canvas.before: 
         Color:  
-            rgba: rgba('#5D4FFF') if self.state == 'normal' else rgba('#A49CFF')
+            rgba: rgba('#5D4FFF') if self.state == 'normal' else rgba('#3694FF')
      
         RoundedRectangle:
             size: self.size
@@ -15,7 +15,12 @@
             radius: [400]
             
             
-
+<EmptySpace@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    size: self.size
+    pos: self.pos
+   
 
 
 <SmartSystem>:
@@ -24,28 +29,74 @@
         orientation: "vertical"
         size: root.width, root.height
        
+       
         KivyCamera:
             id: face_recognition_camera
             size_hint: (1, 1)
-            
+                
             
         GridLayout:
             cols: 3
-            rows: 4
+            rows: 5
             size_hint: (1, 1)
             padding: 20
             spacing: 20
 
-
+        
+            EmptySpace
+            
+            RoundedButton:
+                id: HOME
+                text: "HOME"
+               
+            EmptySpace
+            
             RoundedButton:
                 id: KivyCamera_verify_btn
                 text: 'Open Elevator'
+                on_press: root.verify_button_clicked()
                
                
             
             RoundedButton:
                 id: KivyCamera_visitor_btn
                 text: "I'm a Visitor"
+
+            RoundedButton:
+                id: floor_1
+                text: "1"
+
+            RoundedButton:
+                id: floor_2
+                text: "2"
+
+            RoundedButton:
+                id: floor_3
+                text: "3"
+            
+            RoundedButton:
+                id: floor_4
+                text: "4"
+            
+            RoundedButton:
+                id: floor_5
+                text: "5"
+            
+            RoundedButton:
+                id: floor_6
+                text: "6"
+
+            RoundedButton:
+                id: floor_7
+                text: "7"
+            
+            RoundedButton:
+                id: floor_8
+                text: "8"
+            
+            RoundedButton:
+                id: floor_9
+                text: "9"
                            
 
 <KivyCamera>:
