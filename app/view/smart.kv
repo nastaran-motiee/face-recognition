@@ -1,21 +1,16 @@
 #:kivy 2.1.0
 #:import rgba kivy.utils.get_color_from_hex
 
-
-    
-          
                 
 
-<RoundedButton@MDFloatingActionButton>:
-    icon: "numeric-1"
+<FloorButton@MDFloatingActionButton>:
     theme_icon_color: "Custom"
     md_bg_color: "#fefbff"
     icon_color: "#6851a5"
     size: self.size
-    pos: self.pos
-          
+    size_hint: root.size
     
-            
+              
             
 <EmptySpace@Button>:
     background_color: (0, 0, 0, 0)
@@ -27,79 +22,75 @@
 
 <SmartSystem>:
     camera: face_recognition_camera
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
         size: root.width, root.height
        
        
         KivyCamera:
             id: face_recognition_camera
-            size_hint: (1, 1)
+            size_hint: (1.0, 1.0)
+            
                 
             
         MDGridLayout:
             cols: 3
-            rows: 5
-            size_hint: (1, 1)
+            rows: 4
             padding: 20
             spacing: 20
             
-            RoundedButton:
-                id: HOME
-                text: "HOME"
-               
-          
-            
-            RoundedButton:
+            EmptySpace
+
+            FloorButton:
                 id: KivyCamera_verify_btn
-                text: 'Open Elevator'
+                id: HOME
+                icon: "home"
                 on_press: root.verify_button_clicked()
-               
-               
-            
-            RoundedButton:
-                id: KivyCamera_visitor_btn
-                text: "I'm a Visitor"
-
-            RoundedButton:
+        
+            EmptySpace      
+                   
+            FloorButton:
                 id: floor_1
-                text: "1"
+                icon: "numeric-1"
+              
 
-            RoundedButton:
+            FloorButton:
                 id: floor_2
-                text: "2"
+                icon: "numeric-2"
 
-            RoundedButton:
+            FloorButton:
                 id: floor_3
-                text: "3"
+                icon: "numeric-3"
             
-            RoundedButton:
+            FloorButton:
                 id: floor_4
-                text: "4"
+                icon: "numeric-4"
             
-            RoundedButton:
+            FloorButton:
                 id: floor_5
-                text: "5"
+                icon: "numeric-5"
             
-            RoundedButton:
+            FloorButton:
                 id: floor_6
-                text: "6"
+                icon: "numeric-6"
 
-            RoundedButton:
+            FloorButton:
                 id: floor_7
-                text: "7"
+                icon: "numeric-7"
             
-            RoundedButton:
+            FloorButton:
                 id: floor_8
-                text: "8"
+                icon: "numeric-8"
             
-            RoundedButton:
+            FloorButton:
                 id: floor_9
-                text: "9"
+                icon: "numeric-9"
                            
 
 <KivyCamera>:
     size: self.size
+  
+
     
 
    
