@@ -2,17 +2,19 @@
 #:import rgba kivy.utils.get_color_from_hex
 
 
-<RoundedButton@Button>:
-    background_color: (0, 0, 0, 0)
-    background_normal: ''
-    canvas.before: 
-        Color:  
-            rgba: rgba('#5D4FFF') if self.state == 'normal' else rgba('#3694FF')
-     
-        RoundedRectangle:
-            size: self.size
-            pos: self.pos
-            radius: [400]
+    
+          
+                
+
+<RoundedButton@MDFloatingActionButton>:
+    icon: "numeric-1"
+    theme_icon_color: "Custom"
+    md_bg_color: "#fefbff"
+    icon_color: "#6851a5"
+    size: self.size
+    pos: self.pos
+          
+    
             
             
 <EmptySpace@Button>:
@@ -35,21 +37,18 @@
             size_hint: (1, 1)
                 
             
-        GridLayout:
+        MDGridLayout:
             cols: 3
             rows: 5
             size_hint: (1, 1)
             padding: 20
             spacing: 20
-
-        
-            EmptySpace
             
             RoundedButton:
                 id: HOME
                 text: "HOME"
                
-            EmptySpace
+          
             
             RoundedButton:
                 id: KivyCamera_verify_btn

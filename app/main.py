@@ -1,10 +1,10 @@
 from kivy.app import App
 from kivy.lang import Builder
 from smart_system import SmartSystem
-from kivy.core.window import Window
 from kivymd.app import MDApp
-from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDRectangleFlatButton
+from kivymd.icon_definitions import md_icons
+
+
 
 class SmartApp(MDApp):
 
@@ -22,8 +22,8 @@ class SmartApp(MDApp):
 
         self.smart_system = SmartSystem()
         self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Red"
-
+        self.theme_cls.material_style = "M3"
+  
         return self.smart_system
     
   
