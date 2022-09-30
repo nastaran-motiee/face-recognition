@@ -39,8 +39,8 @@ class VoiceAssistant:
             else:
                 self.speak(f"Good Evening{name}")
 
-            self.speak("Do you need to get home?")
-            self._take_command()
+            self.speak("Booking floor")
+            # self._take_command()
 
         else:
             self.speak("Sorry, can't recognize you")

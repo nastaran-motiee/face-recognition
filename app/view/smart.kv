@@ -5,10 +5,11 @@
 
 <FloorButton@MDFloatingActionButton>:
     theme_icon_color: "Custom"
-    md_bg_color: "#fefbff"
-    icon_color: "#6851a5"
+    md_bg_color: "#3D6AF2"
+    icon_color: "#FFFFFF"
     size: self.size
     size_hint: root.size
+   
     
               
             
@@ -25,7 +26,7 @@
     MDBoxLayout:
         orientation: "vertical"
         size: root.width, root.height
-       
+        adaptive_size: True
        
         KivyCamera:
             id: face_recognition_camera
@@ -35,7 +36,7 @@
             
         MDGridLayout:
             cols: 3
-            rows: 4
+            rows: 5
             padding: 20
             spacing: 20
             
@@ -43,7 +44,6 @@
 
             FloorButton:
                 id: KivyCamera_verify_btn
-                id: HOME
                 icon: "home"
                 on_press: root.verify_button_clicked()
         
@@ -85,6 +85,14 @@
             FloorButton:
                 id: floor_9
                 icon: "numeric-9"
+
+            EmptySpace  
+
+            FloorButton:
+                id: HOME
+                icon: "numeric-0"
+        
+            EmptySpace  
                            
 
 <KivyCamera>:
