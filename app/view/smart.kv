@@ -1,23 +1,24 @@
 #:kivy 2.1.0
 #:import rgba kivy.utils.get_color_from_hex
 
-                
 
-<FloorButton@MDFloatingActionButton>:
-    theme_icon_color: "Custom"
-    md_bg_color: "#3D6AF2"
-    icon_color: "#FFFFFF"
+
+<FloorButton@Button>:
+    background_normal: ''
+    background_color: "#015AF5"
+    font_size: 25
     size: self.size
-    size_hint: root.size
+
    
+
     
               
-            
 <EmptySpace@Button>:
     background_color: (0, 0, 0, 0)
     background_normal: ''
     size: self.size
     pos: self.pos
+    
    
 
 
@@ -36,61 +37,60 @@
             
         MDGridLayout:
             cols: 3
-            rows: 5
-            padding: 20
-            spacing: 20
+            padding: 15
+            spacing: 15
             
             EmptySpace
 
             FloorButton:
                 id: KivyCamera_verify_btn
-                icon: "home"
+                text: "Home"
                 on_press: root.verify_button_clicked()
         
             EmptySpace      
                    
             FloorButton:
                 id: floor_1
-                icon: "numeric-1"
-              
-
+                text: "1"
+                
+                
             FloorButton:
                 id: floor_2
-                icon: "numeric-2"
+                text: "2"
 
             FloorButton:
                 id: floor_3
-                icon: "numeric-3"
+                text: "3"
             
             FloorButton:
                 id: floor_4
-                icon: "numeric-4"
+                text: "4"
             
             FloorButton:
                 id: floor_5
-                icon: "numeric-5"
+                text: "5"
             
             FloorButton:
                 id: floor_6
-                icon: "numeric-6"
+                text: "6"
 
             FloorButton:
                 id: floor_7
-                icon: "numeric-7"
+                text: "7"
             
             FloorButton:
                 id: floor_8
-                icon: "numeric-8"
+                text: "8"
             
             FloorButton:
                 id: floor_9
-                icon: "numeric-9"
+                text: "9"
 
             EmptySpace  
 
             FloorButton:
                 id: HOME
-                icon: "numeric-0"
+                text: "0"
         
             EmptySpace  
                            

@@ -20,7 +20,7 @@ class SmartApp(MDApp):
         Integrates open-cv webcam into a kivy user interface and returns it as a root object
         :return:root object
         """
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.material_style = "M3"
 
         self.smart_system = SmartSystem()
