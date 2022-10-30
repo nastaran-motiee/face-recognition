@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/key_panel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/view/key_panel.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/smart_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/smart_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/smart.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/smart.kv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,6 +372,10 @@
       <workItem from="1666613126591" duration="331000" />
       <workItem from="1666614817982" duration="283000" />
       <workItem from="1666615122558" duration="439000" />
+      <workItem from="1666625105607" duration="125000" />
+      <workItem from="1666646400503" duration="115000" />
+      <workItem from="1666709417233" duration="13670000" />
+      <workItem from="1666728150978" duration="190000" />
     </task>
     <servers />
   </component>

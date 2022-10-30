@@ -1,0 +1,74 @@
+<FloorButton@Button>:
+    background_normal: ''
+    background_color: "#015AF5"
+    font_size: 25
+    size: self.size
+  
+         
+<EmptySpace@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    size: self.size
+    pos: self.pos
+
+<KeyPanel>: 
+    MDGridLayout:
+        cols: 3
+        padding: 15
+        spacing: 15
+        size: self.parent.size
+        size_hint: (1.0, 0.5)
+        
+        EmptySpace
+        
+        FloorButton:
+            id: KivyCamera_verify_btn
+            text: "Home"
+            on_press: root.parent.parent.verify_button_clicked()
+    
+        EmptySpace      
+               
+        FloorButton:
+            id: floor_1
+            text: "1"
+            
+            
+        FloorButton:
+            id: floor_2
+            text: "2"
+
+        FloorButton:
+            id: floor_3
+            text: "3"
+        
+        FloorButton:
+            id: floor_4
+            text: "4"
+        
+        FloorButton:
+            id: floor_5
+            text: "5"
+        
+        FloorButton:
+            id: floor_6
+            text: "6"
+
+        FloorButton:
+            id: floor_7
+            text: "7"
+        
+        FloorButton:
+            id: floor_8
+            text: "8"
+        
+        FloorButton:
+            id: floor_9
+            text: "9"  
+
+        EmptySpace  
+
+        FloorButton:
+            id: HOME
+            text: "0"
+        
+        EmptySpace  

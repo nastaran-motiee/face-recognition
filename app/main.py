@@ -6,14 +6,14 @@ from kivymd.icon_definitions import md_icons
 from kivymd.uix.screen import MDScreen
 
 
+Builder.load_file('view/smart.kv')
+Builder.load_file('view/kivy_camera.kv')
+Builder.load_file('view/key_panel.kv')
+
 
 class SmartApp(MDApp):
-
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
-        self.smart_system = None
-        self.face_recognition_camera = None
-        Builder.load_file('view/smart.kv')
 
     def build(self):
         """

@@ -2,102 +2,28 @@
 #:import rgba kivy.utils.get_color_from_hex
 
 
-
-<FloorButton@Button>:
-    background_normal: ''
-    background_color: "#015AF5"
-    font_size: 25
-    size: self.size
-
-   
-
     
-              
-<EmptySpace@Button>:
-    background_color: (0, 0, 0, 0)
-    background_normal: ''
-    size: self.size
-    pos: self.pos
-    
-   
-
 
 <SmartSystem>:
-    camera: face_recognition_camera
+   # camera: face_recognition_camera
+    key_panel: m_key_panel
+
     MDBoxLayout:
         orientation: "vertical"
         size: root.width, root.height
         adaptive_size: True
-       
-        KivyCamera:
-            id: face_recognition_camera
-            size_hint: (1.0, 1.0)
-            
-                
-            
-        MDGridLayout:
-            cols: 3
-            padding: 15
-            spacing: 15
-            
-            EmptySpace
 
-            FloorButton:
-                id: KivyCamera_verify_btn
-                text: "Home"
-                on_press: root.verify_button_clicked()
+        #KivyCamera:
+           # id: face_recognition_camera
+           
         
-            EmptySpace      
-                   
-            FloorButton:
-                id: floor_1
-                text: "1"
-                
-                
-            FloorButton:
-                id: floor_2
-                text: "2"
-
-            FloorButton:
-                id: floor_3
-                text: "3"
+        KeyPanel:
+            id:m_key_panel
             
-            FloorButton:
-                id: floor_4
-                text: "4"
             
-            FloorButton:
-                id: floor_5
-                text: "5"
-            
-            FloorButton:
-                id: floor_6
-                text: "6"
 
-            FloorButton:
-                id: floor_7
-                text: "7"
-            
-            FloorButton:
-                id: floor_8
-                text: "8"
-            
-            FloorButton:
-                id: floor_9
-                text: "9"
+                  
 
-            EmptySpace  
-
-            FloorButton:
-                id: HOME
-                text: "0"
-        
-            EmptySpace  
-                           
-
-<KivyCamera>:
-    size: self.size
-  
 
     
 

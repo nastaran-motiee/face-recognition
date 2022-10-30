@@ -56,8 +56,8 @@ class KivyCamera(Image):
         # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 
         # Load a second sample picture and learn how to recognize it.
-        self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
-        self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
+        #self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
+        #self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
 
         # get all face_encodings from DB
         known_face_encodings_from_mongo = Model.get_all_face_encodings()
