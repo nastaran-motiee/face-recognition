@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/smart_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/smart_system.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,6 +367,11 @@
       <workItem from="1666613126591" duration="331000" />
       <workItem from="1666614817982" duration="283000" />
       <workItem from="1666615122558" duration="439000" />
+      <workItem from="1667205963216" duration="2587000" />
+      <workItem from="1667225504262" duration="749000" />
+      <workItem from="1667237322284" duration="632000" />
+      <workItem from="1667309826499" duration="1383000" />
+      <workItem from="1667339093500" duration="494000" />
     </task>
     <servers />
   </component>
