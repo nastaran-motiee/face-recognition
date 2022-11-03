@@ -21,7 +21,7 @@ class SmartApp(MDApp):
         :return:root object
         """
         self.theme_cls.theme_style = "Light"
-        self.theme_cls.material_style = "M3"
+ 
 
         self.smart_system = SmartSystem()
         
