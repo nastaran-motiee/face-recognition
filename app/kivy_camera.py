@@ -56,8 +56,8 @@ class KivyCamera(Image):
         # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
 
         # Load a second sample picture and learn how to recognize it.
-        #self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
-        #self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
+        # self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
+        # self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
 
         # get all face_encodings from DB
         known_face_encodings_from_mongo = Model.get_all_face_encodings()
@@ -102,10 +102,10 @@ class KivyCamera(Image):
                 self.matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
                 name = "Unknown"
 
-                # # If a match was found in known_face_encodings, just use the first one.
-                # if True in matches:
-                #     first_match_index = matches.index(True)
-                #     name = known_face_names[first_match_index]
+                # If a match was found in known_face_encodings, just use the first one.
+                if True in self.matches:
+                    first_match_index = self.matches.index(True)
+                    name = self.known_face_names[first_match_index]
 
                 # Or instead, use the known face with the smallest distance to the new face
                 self.face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)

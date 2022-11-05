@@ -4,6 +4,31 @@ import datetime
 import speech_recognition as sr
 
 
+def _take_command():
+    """
+    Takes voice instructions from the user
+    :return: command
+    """
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+    try:
+        print("Recognizing...")
+        query = r.recognize_google(audio, language='en-in')
+        print(f"User said: {query}\n")
+
+    except Exception as e:
+        print(e)
+        print("Unable to Recognize your voice.")
+        return "None"
+
+    return query
+
+
 class VoiceAssistant:
     def __init__(self, **kwargs):
         super(VoiceAssistant, self).__init__(**kwargs)
@@ -48,27 +73,3 @@ class VoiceAssistant:
     #  except:
     #      print("Already in process...")
 
-
-    def _take_command(self):
-        """
-        Takes voice instructions from the user
-        :return: command
-        """
-        r = sr.Recognizer()
-
-        with sr.Microphone() as source:
-            print("Listening...")
-            r.pause_threshold = 1
-            audio = r.listen(source)
-
-        try:
-            print("Recognizing...")
-            query = r.recognize_google(audio, language='en-in')
-            print(f"User said: {query}\n")
-
-        except Exception as e:
-            print(e)
-            print("Unable to Recognize your voice.")
-            return "None"
-
-        return query

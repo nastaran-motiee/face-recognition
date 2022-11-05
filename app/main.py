@@ -9,10 +9,11 @@ Builder.load_file('view/smart.kv')
 Builder.load_file('view/kivy_camera.kv')
 Builder.load_file('view/key_panel.kv')
 
+
 class SmartApp(MDApp):
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
-
+        self.smart_system = None
 
     def build(self):
         """
@@ -21,9 +22,8 @@ class SmartApp(MDApp):
         """
         self.theme_cls.theme_style = "Light"
         self.smart_system = SmartSystem()
-        
+
         return MDScreen(self.smart_system)
-    
 
     def on_stop(self):
         """
