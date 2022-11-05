@@ -1,5 +1,5 @@
 # SmartElevatorSystem 
-#A face recognition application for elevator 
-#To run the application: python app/main.py
+#A face recognition application for elevator <br/>
+#To run the application: python app/main.p <br/>
 #this project is in progress...
 
