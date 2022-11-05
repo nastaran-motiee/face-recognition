@@ -1,9 +1,11 @@
 from kivy.app import App
 from kivy.lang import Builder
-from smart_system import SmartSystem
 from kivymd.app import MDApp
 from kivymd.icon_definitions import md_icons
 from kivymd.uix.screen import MDScreen
+from kivy.uix.screenmanager import ScreenManager, Screen
+from client_screen import ClientScreen
+from admin_screen import AdminScreen
 
 Builder.load_file('view/smart.kv')
 Builder.load_file('view/kivy_camera.kv')
@@ -13,7 +15,8 @@ Builder.load_file('view/key_panel.kv')
 class SmartApp(MDApp):
     def __init__(self, **kwargs):
         super(SmartApp, self).__init__(**kwargs)
-        self.smart_system = None
+        self.client_screen = None
+        self.admin_screen = None
 
     def build(self):
         """
@@ -21,15 +24,23 @@ class SmartApp(MDApp):
         :return:root object
         """
         self.theme_cls.theme_style = "Light"
-        self.smart_system = SmartSystem()
+          # Create the screen manager
+        sm = ScreenManager()
+        self.client_screen = ClientScreen(name='client_screen')
+        self.admin_screen = AdminScreen(name='admin_screen')
+        sm.add_widget(self.client_screen)
+        sm.add_widget(self.admin_screen)
 
-        return MDScreen(self.smart_system)
+        return sm
+        
+
+    
 
     def on_stop(self):
         """
         Without this method, app will not exit even if the window is closed
         """
-        self.smart_system.camera.stop()
+        self.client_screen.camera.stop()
 
 
 if __name__ == '__main__':

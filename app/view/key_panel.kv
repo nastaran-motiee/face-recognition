@@ -4,12 +4,14 @@
     text_color: "#9DADC7"
     font_size: 25
     size_hint: self.parent.size
-        
+
+
 <EmptySpace@Button>:
     background_color: (0, 0, 0, 0)
     background_normal: ''
     size: self.size
     pos: self.pos
+
 
 <KeyPanel>: 
     MDGridLayout:
@@ -18,18 +20,13 @@
         spacing: 15
         size: self.parent.size
         size_hint: (1.0, 0.5)
-        
-   
         FloorButton:
             id: KivyCamera_verify_btn
             text: "HOME"
-            on_press: root.parent.parent.verify_button_clicked()
-    
-               
+            on_press: root.parent.parent.verify_button_clicked()     
         FloorButton:
             id: lobby
-            text: "LOBBY"
-                      
+            text: "LOBBY"              
         FloorButton:
             id: floor_2
             text: "ASK PERMISSION"

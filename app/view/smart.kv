@@ -1,34 +1,32 @@
 #:kivy 2.1.0
 #:import rgba kivy.utils.get_color_from_hex
 
-
-<SmartSystem>:
+<ClientScreen>:
     camera: face_recognition_camera
-    key_panel: m_key_panel
-    
+    key_panel: m_key_panel   
     MDBoxLayout:
         orientation: "vertical"
         size: root.width, root.height
         adaptive_size: True
-
-      
-
         MDIconButton:
             icon: "plus"
             pos_hint: {"center_x": .95, "center_y": .5}
-            
-               
-
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'admin_screen'             
         KivyCamera:
-            id: face_recognition_camera 
-              
+            id: face_recognition_camera            
         KeyPanel:
             id:m_key_panel
             
-            
-
                   
-
+<AdminScreen>:
+    BoxLayout:
+        Button:
+            text: 'Back to client_screen'
+            on_press: 
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'client_screen'
 
     
 
