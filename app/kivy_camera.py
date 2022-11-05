@@ -40,7 +40,8 @@ class KivyCamera(Image):
             # convert it to texture
             buf1 = cv2.flip(self.frame, 0)
             buf = buf1.tobytes()
-            image_texture = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
+            image_texture = Texture.create(
+                size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
@@ -53,17 +54,17 @@ class KivyCamera(Image):
 
         # Load a sample picture and learn how to recognize it.
 
-        # Model.add_user(name="Nas", face_encoding=list(self.obama_face_encoding), floor_number=3)
-
         # Load a second sample picture and learn how to recognize it.
-        # self.biden_image = face_recognition.load_image_file("app/model/images/NastaranMotiee.jpg")
+        # self.biden_image = face_recognition.load_image_file("app\model\images\Joe_Biden_presidential_portrait.jpg")
         # self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
+        # Model.add_user(name="Joe", face_encoding=list(self.biden_face_encoding), floor_number=4)
 
         # get all face_encodings from DB
         known_face_encodings_from_mongo = Model.get_all_face_encodings()
         self.known_face_encodings = []
         for face_encoding_dict in known_face_encodings_from_mongo:
-            self.known_face_encodings.append(np.array(face_encoding_dict["face_encoding"]))
+            self.known_face_encodings.append(
+                np.array(face_encoding_dict["face_encoding"]))
 
         self.known_face_names = [
             "Nastaran Motiee",
@@ -77,7 +78,6 @@ class KivyCamera(Image):
         self.process_this_frame = True
 
     def _identity_check(self, dt):
-
         """
         checks the identity of the person which is in front of the camera
         if the person is recognized - shows the name of the person
@@ -92,26 +92,36 @@ class KivyCamera(Image):
             self.rgb_small_frame = small_frame[:, :, ::-1]
 
             # Find all the faces and face encodings in the current frame of video
-            self.face_locations = face_recognition.face_locations(self.rgb_small_frame)
-            self.face_encodings = face_recognition.face_encodings(self.rgb_small_frame, self.face_locations)
+            self.face_locations = face_recognition.face_locations(
+                self.rgb_small_frame)
+            self.face_encodings = face_recognition.face_encodings(
+                self.rgb_small_frame, self.face_locations)
 
             face_names = []
 
             for face_encoding in self.face_encodings:
+
                 # See if the face is a match for the known face(s)
-                self.matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
+                self.matches = face_recognition.compare_faces(
+                    self.known_face_encodings, face_encoding)
                 name = "Unknown"
+                floor_number = "Unknown"
 
                 # If a match was found in known_face_encodings, just use the first one.
                 if True in self.matches:
                     first_match_index = self.matches.index(True)
-                    name = self.known_face_names[first_match_index]
+                    name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
+                    floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
+                    
 
                 # Or instead, use the known face with the smallest distance to the new face
                 self.face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
                 self.best_match_index = np.argmin(self.face_distances)
+
                 if self.matches[self.best_match_index]:
-                    name = self.known_face_names[self.best_match_index]
+                    name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
+                    floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
+                    
 
                 face_names.append(name)
 
@@ -120,7 +130,7 @@ class KivyCamera(Image):
                 if len(face_names) != 0:
                     self.identification_event.cancel()
 
-                    self.executor.submit(self.voice_assistant.hello, name)
+                    self.executor.submit(self.voice_assistant.hello, name, floor_number)
 
                     return False
 
@@ -130,7 +140,8 @@ class KivyCamera(Image):
         -used when verify button is pressed
         :return: None
         """
-        self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / 30.0)
+        self.identification_event = Clock.schedule_interval(
+            self._identity_check, 1.0 / 30.0)
 
     def stop(self):
         self.capture.release()

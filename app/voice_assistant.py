@@ -45,8 +45,7 @@ class VoiceAssistant:
         self.engine.say(audio)
         self.engine.runAndWait()
 
-    def hello(self, name):
-
+    def hello(self, name, floor_number):
         """
         Greets the user according to the hour
         :param name: name of user
@@ -54,7 +53,7 @@ class VoiceAssistant:
         """
         #   try:
         hour = int(datetime.datetime.now().hour)
-        if name != 'Unknown':
+        if name != "Unknown" and floor_number != "Unknown":
             if 0 <= hour < 12:
                 self.speak(f"Good Morning{name}")
 
@@ -64,7 +63,7 @@ class VoiceAssistant:
             else:
                 self.speak(f"Good Evening{name}")
 
-            self.speak("Booking floor")
+            self.speak(f"Your destination is floor {floor_number}")
             # self._take_command()
 
         else:
@@ -72,4 +71,3 @@ class VoiceAssistant:
 
     #  except:
     #      print("Already in process...")
-

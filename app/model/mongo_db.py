@@ -2,6 +2,7 @@ import configparser
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 from threading import Lock
+import numpy as np
 
 
 class Model:
@@ -18,9 +19,9 @@ class Model:
         """
         Configuration method to return db instance
         """
-        if not cls._db_instance:
+        if cls._db_instance is None:
             with cls._lock:
-                if not cls._db_instance:
+                if cls._db_instance is None:
                     config = configparser.ConfigParser()
                     config.read("configuration_file.ini")
                     SMART_ELEVATOR_SYSTEM_DB_URI = config.get("CONNECTION_DATA", "SMART_ELEVATOR_SYSTEM_DB_URI")
@@ -47,7 +48,7 @@ class Model:
             })
             return {"success": True}
         except DuplicateKeyError:
-            return {"error": "A user with the given face_encoding already exists."}
+            return {"error": "A user with these information already exists."}
 
     @classmethod
     def get_all_face_encodings(cls):
@@ -65,3 +66,22 @@ class Model:
             projection=project
         )
         return list(result)
+
+    @classmethod 
+    def get_user_info(cls, face_encoding):
+        """
+        :return: users information with this face_encoding
+        """
+        
+        m_filter = {
+            'face_encoding': list(face_encoding)
+        }
+
+        project = {}
+
+        result = Model.get_instance().users_info.find(
+            filter=m_filter
+        )
+
+        return list(result)[0]
+

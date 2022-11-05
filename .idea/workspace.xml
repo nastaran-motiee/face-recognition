@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/smart_system.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/smart.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/smart.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/kivy_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/kivy_camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/mongo_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/mongo_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/voice_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/voice_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +385,7 @@
       <workItem from="1667648450364" duration="777000" />
       <workItem from="1667649297394" duration="26000" />
       <workItem from="1667649489049" duration="312000" />
-      <workItem from="1667650283076" duration="2649000" />
+      <workItem from="1667650283076" duration="5755000" />
     </task>
     <servers />
   </component>

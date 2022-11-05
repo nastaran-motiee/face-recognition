@@ -21,12 +21,19 @@
             
                   
 <AdminScreen>:
-    BoxLayout:
-        Button:
-            text: 'Back to client_screen'
+    MDBoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        adaptive_size: True
+        MDIconButton:
+            icon: "arrow-left"
+          
             on_press: 
                 root.manager.transition.direction = 'right'
                 root.manager.current = 'client_screen'
+   
+
+           
 
     
 
