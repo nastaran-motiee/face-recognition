@@ -53,6 +53,7 @@ class VoiceAssistant:
         """
         #   try:
         hour = int(datetime.datetime.now().hour)
+
         if name != "Unknown" and floor_number != "Unknown":
             if 0 <= hour < 12:
                 self.speak(f"Good Morning{name}")

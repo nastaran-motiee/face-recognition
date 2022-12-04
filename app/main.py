@@ -24,7 +24,7 @@ class SmartApp(MDApp):
         :return:root object
         """
         self.theme_cls.theme_style = "Light"
-          # Create the screen manager
+        # Create the screen manager
         sm = ScreenManager()
         self.client_screen = ClientScreen(name='client_screen')
         self.admin_screen = AdminScreen(name='admin_screen')
