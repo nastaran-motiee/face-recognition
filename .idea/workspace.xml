@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.debug.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/environment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/key_panel.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/key_panel.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/kivy_camera.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/kivy_camera.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/voice_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/voice_assistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/key_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/key_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/kivy_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/real_time_face_recognition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/smart.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/smart.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +55,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/venv/Lib/site-packages/kivy/factory.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -153,9 +163,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\nnast\anaconda3\envs\smart-elevator-env\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -387,7 +397,14 @@
       <workItem from="1667649489049" duration="312000" />
       <workItem from="1667650283076" duration="5755000" />
       <workItem from="1668523416522" duration="444000" />
-      <workItem from="1670151994796" duration="440000" />
+      <workItem from="1670151994796" duration="599000" />
+      <workItem from="1670225629006" duration="1513000" />
+      <workItem from="1670593323345" duration="333000" />
+      <workItem from="1671124103815" duration="662000" />
+      <workItem from="1671373149489" duration="30000" />
+      <workItem from="1672148319514" duration="843000" />
+      <workItem from="1673097299461" duration="19478000" />
+      <workItem from="1673355899844" duration="455000" />
     </task>
     <servers />
   </component>
@@ -417,7 +434,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/smart_elevator_system$main.coverage" NAME="main Coverage Results" MODIFIED="1663468261358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1667573700400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1673115901090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/smart_elevator_system$voice_assistant.coverage" NAME="voice_assistant Coverage Results" MODIFIED="1662489378566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

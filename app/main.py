@@ -32,9 +32,6 @@ class SmartApp(MDApp):
         sm.add_widget(self.admin_screen)
 
         return sm
-        
-
-    
 
     def on_stop(self):
         """

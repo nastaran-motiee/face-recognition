@@ -17,10 +17,15 @@ class KivyCamera(Image):
 
     def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
+        self.identification_event = None
         self.executor = ThreadPoolExecutor(1)
-
         self.frame = None
         self.ret = None
+        self.last_face_encoding = None
+        self.current_small_frame = None
+        self.small_frame = None
+        self.rgb_small_frame = None
+        self.all_face_locations = []
         self._load_data()
         self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -28,13 +33,39 @@ class KivyCamera(Image):
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         Clock.schedule_interval(self._update, 1.0 / self.fps)
-        self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / self.fps)
+
+    # self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / self.fps)
 
     def _update(self, dt):
         """
         updates the captured video from open-cv each 30 sec
         """
+        # if 'q' key is pressed , stop
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            return False
+
+        # get the current frame from the video stream as an image
         self.ret, self.frame = self.capture.read()
+        self.current_small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
+        all_faces_locations = face_recognition.face_locations(self.current_small_frame)
+
+        if self.process_this_frame and len(all_faces_locations) > 0:
+            if self.last_face_encoding is None:
+                self._identity_check()
+            else:
+                # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+                self.rgb_small_frame = self.current_small_frame[:, :, ::-1]
+                face_encodings = face_recognition.face_encodings(
+                    self.rgb_small_frame, self.face_locations)
+
+                for face_encoding in face_encodings:
+                    # See if the face is a match for the known face(s)
+                    matches = face_recognition.compare_faces(face_encoding, self.last_face_encoding)
+
+                    for match in matches:
+                        print(match)
+                        if not match:
+                            self._identity_check()
 
         if self.ret:
             # convert it to texture
@@ -73,13 +104,13 @@ class KivyCamera(Image):
         self.face_names = []
         self.process_this_frame = True
 
-    def _identity_check(self, dt):
+    def _identity_check(self):
         """
         checks the identity of the person which is in front of the camera
         if the person is recognized - shows the name of the person
         else - shows unknown
         """
-        print(dt)
+
         # Only process every other frame of video to save time
         if self.process_this_frame:
             # Resize frame of video to 1/4 size for faster face recognition processing
@@ -90,14 +121,17 @@ class KivyCamera(Image):
 
             # Find all the faces and face encodings in the current frame of video
             self.face_locations = face_recognition.face_locations(
-                self.rgb_small_frame, model='cnn')
+                self.rgb_small_frame)
             self.face_encodings = face_recognition.face_encodings(
-                self.rgb_small_frame, self.face_locations,model='cnn')
+                self.rgb_small_frame, self.face_locations)
+
+            for face_encoding in self.face_encodings:
+                self.last_face_encoding = [np.array(face_encoding)]
+                break
 
             face_names = []
 
             for face_encoding in self.face_encodings:
-
                 # See if the face is a match for the known face(s)
                 self.matches = face_recognition.compare_faces(
                     self.known_face_encodings, face_encoding)
@@ -119,16 +153,11 @@ class KivyCamera(Image):
                     floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
 
                 face_names.append(name)
-              
 
                 print(name)
 
                 if len(face_names) != 0:
-                    self.identification_event.cancel()
-
                     self.executor.submit(self.voice_assistant.hello, name, floor_number)
-
-                    return False
 
     def verify_button_action(self):
         """
