@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  smartelevatorsystem:
+    image: smartelevatorsystem
+    build:
+      context: .
+      dockerfile: ./Dockerfile

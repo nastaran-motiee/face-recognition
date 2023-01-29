@@ -1,18 +1,16 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python
+FROM continuumio/miniconda3
 
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
 
-# Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED=1
-
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+# Create the environment:
+COPY environment.yml .
+RUN conda env create -f environment.yml
 
 WORKDIR /app
 COPY . /app
 
-# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "app\main.py"]
+# Make RUN commands use the new environment:
+SHELL ["conda", "run", "-n", "smart-elevator-env", "/bin/bash", "-c"]
+
+COPY run.py .
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "smart-elevator-env", "python", "run.py"]

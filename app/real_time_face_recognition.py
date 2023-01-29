@@ -19,7 +19,6 @@ class KivyCamera(Image):
         super(KivyCamera, self).__init__(**kwargs)
         self.executor = ThreadPoolExecutor(1)
 
-        self.identification_event = None
         self.frame = None
         self.ret = None
         self._load_data()
@@ -29,6 +28,7 @@ class KivyCamera(Image):
         self.fps = 33.
         self.voice_assistant = VoiceAssistant()
         Clock.schedule_interval(self._update, 1.0 / self.fps)
+        self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / self.fps)
 
     def _update(self, dt):
         """
@@ -45,6 +45,7 @@ class KivyCamera(Image):
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
+            self.last_name = ""
 
     def _load_data(self):
         """
@@ -66,11 +67,6 @@ class KivyCamera(Image):
             self.known_face_encodings.append(
                 np.array(face_encoding_dict["face_encoding"]))
 
-        self.known_face_names = [
-            "Nastaran Motiee",
-            "Joe Biden"
-        ]
-
         # Initialize some variables
         self.face_locations = []
         self.face_encodings = []
@@ -83,6 +79,7 @@ class KivyCamera(Image):
         if the person is recognized - shows the name of the person
         else - shows unknown
         """
+        print(dt)
         # Only process every other frame of video to save time
         if self.process_this_frame:
             # Resize frame of video to 1/4 size for faster face recognition processing
@@ -93,9 +90,9 @@ class KivyCamera(Image):
 
             # Find all the faces and face encodings in the current frame of video
             self.face_locations = face_recognition.face_locations(
-                self.rgb_small_frame)
+                self.rgb_small_frame, model='cnn')
             self.face_encodings = face_recognition.face_encodings(
-                self.rgb_small_frame, self.face_locations)
+                self.rgb_small_frame, self.face_locations,model='cnn')
 
             face_names = []
 
@@ -112,7 +109,6 @@ class KivyCamera(Image):
                     first_match_index = self.matches.index(True)
                     name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
                     floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
-                    
 
                 # Or instead, use the known face with the smallest distance to the new face
                 self.face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
@@ -121,11 +117,11 @@ class KivyCamera(Image):
                 if self.matches[self.best_match_index]:
                     name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
                     floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
-                    
 
                 face_names.append(name)
+              
 
-                print(face_names)
+                print(name)
 
                 if len(face_names) != 0:
                     self.identification_event.cancel()
