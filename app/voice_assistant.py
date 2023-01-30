@@ -4,37 +4,38 @@ import datetime
 import speech_recognition as sr
 
 
-def _take_command():
-    """
-    Takes voice instructions from the user
-    :return: command
-    """
-    r = sr.Recognizer()
-
-    with sr.Microphone() as source:
-        print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
-
-    try:
-        print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in')
-        print(f"User said: {query}\n")
-
-    except Exception as e:
-        print(e)
-        print("Unable to Recognize your voice.")
-        return "None"
-
-    return query
-
-
 class VoiceAssistant:
     def __init__(self, **kwargs):
         super(VoiceAssistant, self).__init__(**kwargs)
         self.engine = pyttsx3.init('sapi5')
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
+
+    def _take_command(self):
+        """
+        Takes voice instructions from the user
+        :return: command
+        """
+        r = sr.Recognizer()
+        print("a")
+
+        with sr.Microphone() as source:
+            r.adjust_for_ambient_noise(source, duration=1)
+            print("Listening...")
+            r.pause_threshold = 1
+            audio = r.listen(source)
+
+        try:
+            print("Recognizing...")
+            query = r.recognize_google(audio, language='en-in')
+            print(f"User said: {query}\n")
+
+        except Exception as e:
+            print(e)
+            print("Unable to Recognize your voice.")
+            return "None"
+
+        return query
 
     def speak(self, audio):
         """
@@ -48,6 +49,7 @@ class VoiceAssistant:
     def hello(self, name, floor_number):
         """
         Greets the user according to the hour
+        :param floor_number:
         :param name: name of user
         :return:none
         """
@@ -56,19 +58,19 @@ class VoiceAssistant:
 
         if name != "Unknown" and floor_number != "Unknown":
             if 0 <= hour < 12:
-                self.speak(f"Good Morning{name}")
+                self.speak(f"Good Morning")
 
             elif 12 <= hour < 18:
-                self.speak(f"Good Afternoon{name}")
+                self.speak(f"Good Afternoon")
 
             else:
-                self.speak(f"Good Evening{name}")
+                self.speak(f"Good Evening")
 
-            self.speak(f"Your destination is floor {floor_number}")
-            # self._take_command()
+            self.speak(f"Would you like to get to floor {floor_number}?")
+            self._take_command()
 
-        else:
-            self.speak("Sorry, can't recognize you")
+        # else:
+        #     self.speak("Sorry, can't recognize you")
 
     #  except:
     #      print("Already in process...")

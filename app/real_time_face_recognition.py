@@ -31,12 +31,14 @@ class KivyCamera(Image):
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
         self.fps = 33.
+        self.talking = False
         self.voice_assistant = VoiceAssistant()
-        Clock.schedule_interval(self._update, 1.0 / self.fps)
+        self.face_recognition_event = Clock.schedule_interval(self._update, 1.0 / self.fps)
 
     # self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / self.fps)
 
     def _update(self, dt):
+
         """
         updates the captured video from open-cv each 30 sec
         """
@@ -46,6 +48,7 @@ class KivyCamera(Image):
 
         # get the current frame from the video stream as an image
         self.ret, self.frame = self.capture.read()
+
         self.current_small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
         all_faces_locations = face_recognition.face_locations(self.current_small_frame)
 
@@ -63,7 +66,6 @@ class KivyCamera(Image):
                     matches = face_recognition.compare_faces(face_encoding, self.last_face_encoding)
 
                     for match in matches:
-                        print(match)
                         if not match:
                             self._identity_check()
 
@@ -76,7 +78,7 @@ class KivyCamera(Image):
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
-            self.last_name = ""
+
 
     def _load_data(self):
         """
@@ -112,6 +114,7 @@ class KivyCamera(Image):
         """
 
         # Only process every other frame of video to save time
+        global first_match_index
         if self.process_this_frame:
             # Resize frame of video to 1/4 size for faster face recognition processing
             small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
@@ -170,3 +173,4 @@ class KivyCamera(Image):
 
     def stop(self):
         self.capture.release()
+        cv2.destroyAllWindows()

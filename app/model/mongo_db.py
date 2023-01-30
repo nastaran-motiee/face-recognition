@@ -67,12 +67,12 @@ class Model:
         )
         return list(result)
 
-    @classmethod 
+    @classmethod
     def get_user_info(cls, face_encoding):
         """
         :return: users information with this face_encoding
         """
-        
+
         m_filter = {
             'face_encoding': list(face_encoding)
         }
