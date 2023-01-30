@@ -11,3 +11,4 @@ class ClientScreen(Screen):
 
     def verify_button_clicked(self):
         self.camera.verify_button_action()
+

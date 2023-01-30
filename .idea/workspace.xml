@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.debug.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/environment.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin_screen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/client_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/key_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/key_panel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/kivy_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/real_time_face_recognition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/smart.kv" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/smart.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/mongo_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/mongo_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/real_time_face_recognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/real_time_face_recognition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/voice_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/voice_assistant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -405,6 +394,7 @@
       <workItem from="1672148319514" duration="843000" />
       <workItem from="1673097299461" duration="19478000" />
       <workItem from="1673355899844" duration="455000" />
+      <workItem from="1675098658952" duration="313000" />
     </task>
     <servers />
   </component>
@@ -434,7 +424,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/smart_elevator_system$main.coverage" NAME="main Coverage Results" MODIFIED="1663468261358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1673115901090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1675032693840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/smart_elevator_system$voice_assistant.coverage" NAME="voice_assistant Coverage Results" MODIFIED="1662489378566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
