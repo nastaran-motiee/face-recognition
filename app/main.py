@@ -9,7 +9,7 @@ from admin_screen import AdminScreen
 
 Builder.load_file('view/smart.kv')
 Builder.load_file('view/kivy_camera.kv')
-Builder.load_file('view/key_panel.kv')
+
 
 
 class SmartApp(MDApp):
