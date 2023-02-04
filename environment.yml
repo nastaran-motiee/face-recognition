@@ -130,3 +130,5 @@ dependencies:
   - pip:
       - -r requirements.txt.txt
 prefix: C:\Users\nnast\anaconda3\envs\smart-elevator-env
+
+

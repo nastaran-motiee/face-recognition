@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8aaffb71-bc93-4433-96c9-ea30a0b6a610" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/mongo_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/mongo_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/voice_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/voice_assistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/environment.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,9 +150,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\nnast\anaconda3\envs\smart-elevator-env\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -275,7 +278,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6f992ca0-6867-48a3-b073-9d671d2d66ca" name="Changes" comment="" />
+      <changelist id="8aaffb71-bc93-4433-96c9-ea30a0b6a610" name="Changes" comment="" />
       <created>1660176667527</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -390,6 +393,7 @@
       <workItem from="1673097299461" duration="19478000" />
       <workItem from="1673355899844" duration="455000" />
       <workItem from="1675098658952" duration="313000" />
+      <workItem from="1675533745913" duration="715000" />
     </task>
     <servers />
   </component>
@@ -419,7 +423,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/smart_elevator_system$main.coverage" NAME="main Coverage Results" MODIFIED="1663468261358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1675102535323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1675102953467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/smart_elevator_system$voice_assistant.coverage" NAME="voice_assistant Coverage Results" MODIFIED="1662489378566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SmartElevatorSystem$client_screen.coverage" NAME="client_screen Coverage Results" MODIFIED="1675101872089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
