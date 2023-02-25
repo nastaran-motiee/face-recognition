@@ -7,9 +7,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from client_screen import ClientScreen
 from admin_screen import AdminScreen
 
-Builder.load_file('view/smart.kv')
-Builder.load_file('view/kivy_camera.kv')
-
+Builder.load_file('./view/smart.kv')
+Builder.load_file('./view/kivy_camera.kv')
 
 
 class SmartApp(MDApp):
@@ -21,7 +20,7 @@ class SmartApp(MDApp):
     def build(self):
         """
         Integrates open-cv webcam into a kivy user interface and returns it as a root object
-        :return:root object
+        :return: root object
         """
         self.theme_cls.theme_style = "Light"
         # Create the screen manager

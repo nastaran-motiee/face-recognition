@@ -4,139 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aaffb71-bc93-4433-96c9-ea30a0b6a610" name="Changes" comment="">
+    <list default="true" id="39b18798-aec8-4ee8-8de8-f075fadeaf4e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/admin_screen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client_screen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kivy_camera.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voice_assistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/key_panel.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin_screen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client_screen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/kivy_camera.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/images/Joe_Biden_presidential_portrait.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/model/images/Joe_Biden_presidential_portrait.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/images/NastaranMotiee.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/model/images/NastaranMotiee.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model/mongo_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/mongo_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/kivy_camera.kv" beforeDir="false" afterPath="$PROJECT_DIR$/view/kivy_camera.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/smart.kv" beforeDir="false" afterPath="$PROJECT_DIR$/view/smart.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/voice_assistant.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.debug.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/environment.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Jupyter Notebook" />
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="kivy" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2DBdyS8YvruIBQDddPMXhlTr14f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2MBRHL8UBNNch7upSzDS99HSntF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nnast/PycharmProjects/SmartElevatorSystem&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/nnast/PycharmProjects/SmartElevatorSystem/main.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nnast\PycharmProjects\SmartElevatoSystem\venv\Lib\site-packages" />
-      <recent name="C:\Users\nnast\PycharmProjects\SmartElevatorSystem" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nnast\PycharmProjects\SmartElevatorSystem" />
       <recent name="C:\Users\nnast\PycharmProjects\SmartElevatorSystem\app" />
-      <recent name="C:\Users\nnast\PycharmProjects\SmartElevatoSystem" />
-      <recent name="C:\Users\nnast\PycharmProjects\SmartElevatoSystem\venv" />
-      <recent name="C:\Users\nnast\PycharmProjects\smart-elevator-system\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration default="true" type="DjangoTestsConfigurationType">
-      <module name="smart-elevator-system" />
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="SmartElevatorSystem" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -156,7 +107,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,235 +116,23 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Python.FlaskServer">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="containerName" value="" />
-          <option name="sourceFilePath" value="Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="smart-elevator-system" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Docker.Dockerfile" />
-      <item itemvalue="Python.main" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\nnast\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8aaffb71-bc93-4433-96c9-ea30a0b6a610" name="Changes" comment="" />
-      <created>1660176667527</created>
+      <changelist id="39b18798-aec8-4ee8-8de8-f075fadeaf4e" name="Changes" comment="" />
+      <created>1677238907209</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1660176667527</updated>
-      <workItem from="1660176673227" duration="443000" />
-      <workItem from="1660205099955" duration="21624000" />
-      <workItem from="1660230256517" duration="1487000" />
-      <workItem from="1660250256009" duration="4239000" />
-      <workItem from="1660259971846" duration="2985000" />
-      <workItem from="1660309431992" duration="10573000" />
-      <workItem from="1660384259433" duration="3035000" />
-      <workItem from="1660395446779" duration="9294000" />
-      <workItem from="1660419219371" duration="540000" />
-      <workItem from="1660555384266" duration="4785000" />
-      <workItem from="1660564134514" duration="3711000" />
-      <workItem from="1660758728303" duration="335000" />
-      <workItem from="1661178218975" duration="25938000" />
-      <workItem from="1661258654283" duration="30000" />
-      <workItem from="1661347029185" duration="6430000" />
-      <workItem from="1661430598987" duration="11831000" />
-      <workItem from="1661513082556" duration="19738000" />
-      <workItem from="1661536725868" duration="787000" />
-      <workItem from="1661541597997" duration="13000" />
-      <workItem from="1661552724003" duration="2209000" />
-      <workItem from="1661587417663" duration="2085000" />
-      <workItem from="1661594135845" duration="4992000" />
-      <workItem from="1661602660434" duration="8000" />
-      <workItem from="1661636448220" duration="153000" />
-      <workItem from="1661692741141" duration="10217000" />
-      <workItem from="1661709870724" duration="7856000" />
-      <workItem from="1661718424247" duration="353000" />
-      <workItem from="1661768294588" duration="427000" />
-      <workItem from="1661863027695" duration="23561000" />
-      <workItem from="1661946375968" duration="14991000" />
-      <workItem from="1662035940345" duration="11521000" />
-      <workItem from="1662117738712" duration="9669000" />
-      <workItem from="1662132964056" duration="1928000" />
-      <workItem from="1662141498397" duration="860000" />
-      <workItem from="1662162001681" duration="6211000" />
-      <workItem from="1662219708973" duration="168000" />
-      <workItem from="1662226149816" duration="4143000" />
-      <workItem from="1662230336434" duration="1078000" />
-      <workItem from="1662231442107" duration="4703000" />
-      <workItem from="1662295015886" duration="2697000" />
-      <workItem from="1662305843244" duration="3581000" />
-      <workItem from="1662316052503" duration="5371000" />
-      <workItem from="1662369576626" duration="1224000" />
-      <workItem from="1662386437219" duration="612000" />
-      <workItem from="1662387748475" duration="572000" />
-      <workItem from="1662475129896" duration="676000" />
-      <workItem from="1662480216024" duration="28000" />
-      <workItem from="1662481263458" duration="20000" />
-      <workItem from="1662484410991" duration="1628000" />
-      <workItem from="1662486100772" duration="4619000" />
-      <workItem from="1662550755665" duration="2847000" />
-      <workItem from="1662633720809" duration="1460000" />
-      <workItem from="1662637555041" duration="649000" />
-      <workItem from="1662639965958" duration="1633000" />
-      <workItem from="1662644472771" duration="10000" />
-      <workItem from="1662649429865" duration="3053000" />
-      <workItem from="1663430486579" duration="173000" />
-      <workItem from="1663465125723" duration="609000" />
-      <workItem from="1663466192847" duration="245000" />
-      <workItem from="1663466531109" duration="1835000" />
-      <workItem from="1663522215005" duration="269000" />
-      <workItem from="1663522566830" duration="6817000" />
-      <workItem from="1663616088154" duration="3437000" />
-      <workItem from="1663677946743" duration="2235000" />
-      <workItem from="1663687524263" duration="2427000" />
-      <workItem from="1663789903695" duration="232000" />
-      <workItem from="1663853664957" duration="6945000" />
-      <workItem from="1663943656353" duration="13000" />
-      <workItem from="1663945481399" duration="420000" />
-      <workItem from="1663945906722" duration="2378000" />
-      <workItem from="1664031468734" duration="8832000" />
-      <workItem from="1664058344341" duration="2756000" />
-      <workItem from="1664065038166" duration="1024000" />
-      <workItem from="1664106898945" duration="5574000" />
-      <workItem from="1664138759630" duration="602000" />
-      <workItem from="1664149229413" duration="3533000" />
-      <workItem from="1664301277544" duration="3831000" />
-      <workItem from="1664382052837" duration="99000" />
-      <workItem from="1664382331446" duration="1248000" />
-      <workItem from="1664458423291" duration="135000" />
-      <workItem from="1664458658736" duration="3275000" />
-      <workItem from="1666458921799" duration="418000" />
-      <workItem from="1666460126625" duration="3859000" />
-      <workItem from="1666613126591" duration="331000" />
-      <workItem from="1666614817982" duration="283000" />
-      <workItem from="1666615122558" duration="439000" />
-      <workItem from="1666625105607" duration="125000" />
-      <workItem from="1666646400503" duration="115000" />
-      <workItem from="1666709417233" duration="13670000" />
-      <workItem from="1666728150978" duration="190000" />
-      <workItem from="1667415626570" duration="638000" />
-      <workItem from="1667479447307" duration="1789000" />
-      <workItem from="1667566958274" duration="53000" />
-      <workItem from="1667570729522" duration="1108000" />
-      <workItem from="1667571868226" duration="62000" />
-      <workItem from="1667571932853" duration="3352000" />
-      <workItem from="1667648450364" duration="777000" />
-      <workItem from="1667649297394" duration="26000" />
-      <workItem from="1667649489049" duration="312000" />
-      <workItem from="1667650283076" duration="5755000" />
-      <workItem from="1668523416522" duration="444000" />
-      <workItem from="1670151994796" duration="599000" />
-      <workItem from="1670225629006" duration="1513000" />
-      <workItem from="1670593323345" duration="333000" />
-      <workItem from="1671124103815" duration="662000" />
-      <workItem from="1671373149489" duration="30000" />
-      <workItem from="1672148319514" duration="843000" />
-      <workItem from="1673097299461" duration="19478000" />
-      <workItem from="1673355899844" duration="455000" />
-      <workItem from="1675098658952" duration="313000" />
-      <workItem from="1675533745913" duration="715000" />
+      <updated>1677238907209</updated>
+      <workItem from="1677238908691" duration="62000" />
+      <workItem from="1677238994460" duration="467000" />
+      <workItem from="1677239610988" duration="363000" />
+      <workItem from="1677240189968" duration="1965000" />
+      <workItem from="1677243734221" duration="7061000" />
+      <workItem from="1677340646699" duration="1744000" />
+      <workItem from="1677344204081" duration="933000" />
+      <workItem from="1677345186620" duration="3502000" />
     </task>
     <servers />
   </component>
@@ -403,28 +142,7 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/smart-elevator-system" />
-      <path value="$PROJECT_DIR$/buildozer" />
-    </ignored-roots>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/smart_elevator_system$main.coverage" NAME="main Coverage Results" MODIFIED="1663468261358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1675535261928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/smart_elevator_system$voice_assistant.coverage" NAME="voice_assistant Coverage Results" MODIFIED="1662489378566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SmartElevatorSystem$client_screen.coverage" NAME="client_screen Coverage Results" MODIFIED="1675101872089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/SmartElevatorSystem$main.coverage" NAME="main Coverage Results" MODIFIED="1677348349422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

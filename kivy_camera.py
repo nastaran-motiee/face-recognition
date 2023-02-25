@@ -18,14 +18,14 @@ class KivyCamera(Image):
     def __init__(self, **kwargs):
         super(KivyCamera, self).__init__(**kwargs)
         self.identification_event = None
-        self.executor = ThreadPoolExecutor(1)
+        self.executor = ThreadPoolExecutor(3)
         self.frame = None
         self.ret = None
         self.last_face_encoding = None
         self.current_small_frame = None
         self.small_frame = None
         self.rgb_small_frame = None
-        self.all_face_locations = []
+        self.face_locations = []
         self._load_data()
         self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -33,12 +33,33 @@ class KivyCamera(Image):
         self.fps = 33.
         self.talking = False
         self.voice_assistant = VoiceAssistant()
-        self.face_recognition_event = Clock.schedule_interval(self._update, 1.0 / self.fps)
+        self.face_detection_event = Clock.schedule_interval(self._update, 1.0 / self.fps)
 
-    # self.identification_event = Clock.schedule_interval(self._identity_check, 1.0 / self.fps)
+    def _load_data(self):
+        """
+        Loads the necessary data for the application to run
+        :return: None
+        """
+        # Load a sample picture and learn how to recognize it.
+        # Load a second sample picture and learn how to recognize it.
+        # self.biden_image = face_recognition.load_image_file("app\model\images\Joe_Biden_presidential_portrait.jpg")
+        # self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
+        # Model.add_user(name="Joe", face_encoding=list(self.biden_face_encoding), floor_number=4)
+
+        # get all face_encodings from DB
+        known_face_encodings_from_mongo = Model.get_all_face_encodings()
+        self.known_face_encodings = []
+        for face_encoding_dict in known_face_encodings_from_mongo:
+            self.known_face_encodings.append(
+                np.array(face_encoding_dict["face_encoding"]))
+
+        # Initialize some variables
+        self.face_locations = []
+        self.face_encodings = []
+        self.face_names = []
+        self.process_this_frame = True
 
     def _update(self, dt):
-
         """
         updates the captured video from open-cv each 30 sec
         """
@@ -50,9 +71,10 @@ class KivyCamera(Image):
         self.ret, self.frame = self.capture.read()
 
         self.current_small_frame = cv2.resize(self.frame, (0, 0), fx=0.25, fy=0.25)
-        all_faces_locations = face_recognition.face_locations(self.current_small_frame)
+        self.face_locations = face_recognition.face_locations(self.current_small_frame)
+        print(self.face_locations)
 
-        if self.process_this_frame and len(all_faces_locations) > 0:
+        if self.process_this_frame and len(self.face_locations) > 0:
             if self.last_face_encoding is None:
                 self._identity_check()
             else:
@@ -78,33 +100,6 @@ class KivyCamera(Image):
             image_texture.blit_buffer(buf, colorfmt='bgr', bufferfmt='ubyte')
             # display image from the texture
             self.texture = image_texture
-
-
-    def _load_data(self):
-        """
-        Loads the necessary data for the application to run
-        :return: None
-        """
-
-        # Load a sample picture and learn how to recognize it.
-
-        # Load a second sample picture and learn how to recognize it.
-        # self.biden_image = face_recognition.load_image_file("app\model\images\Joe_Biden_presidential_portrait.jpg")
-        # self.biden_face_encoding = face_recognition.face_encodings(self.biden_image)[0]
-        # Model.add_user(name="Joe", face_encoding=list(self.biden_face_encoding), floor_number=4)
-
-        # get all face_encodings from DB
-        known_face_encodings_from_mongo = Model.get_all_face_encodings()
-        self.known_face_encodings = []
-        for face_encoding_dict in known_face_encodings_from_mongo:
-            self.known_face_encodings.append(
-                np.array(face_encoding_dict["face_encoding"]))
-
-        # Initialize some variables
-        self.face_locations = []
-        self.face_encodings = []
-        self.face_names = []
-        self.process_this_frame = True
 
     def _identity_check(self):
         """
@@ -136,14 +131,14 @@ class KivyCamera(Image):
 
             for face_encoding in self.face_encodings:
                 # See if the face is a match for the known face(s)
-                self.matches = face_recognition.compare_faces(
+                matches = face_recognition.compare_faces(
                     self.known_face_encodings, face_encoding)
                 name = "Unknown"
                 floor_number = "Unknown"
 
                 # If a match was found in known_face_encodings, just use the first one.
-                if True in self.matches:
-                    first_match_index = self.matches.index(True)
+                if True in matches:
+                    first_match_index = matches.index(True)
                     name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
                     floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
 
@@ -151,7 +146,7 @@ class KivyCamera(Image):
                 self.face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
                 self.best_match_index = np.argmin(self.face_distances)
 
-                if self.matches[self.best_match_index]:
+                if matches[self.best_match_index]:
                     name = Model.get_user_info(self.known_face_encodings[first_match_index])['name']
                     floor_number = Model.get_user_info(self.known_face_encodings[first_match_index])['floor_number']
 
@@ -160,16 +155,8 @@ class KivyCamera(Image):
                 print(name)
 
                 if len(face_names) != 0:
+                    self.face_detection_event.cancel()
                     self.executor.submit(self.voice_assistant.hello, name, floor_number)
-
-    def verify_button_action(self):
-        """
-        -Schedules identification
-        -used when verify button is pressed
-        :return: None
-        """
-        self.identification_event = Clock.schedule_interval(
-            self._identity_check, 1.0 / 30.0)
 
     def stop(self):
         self.capture.release()

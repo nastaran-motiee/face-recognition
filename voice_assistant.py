@@ -1,7 +1,33 @@
+import os
 from threading import Lock
 import pyttsx3
 import datetime
+import sys
 import speech_recognition as sr
+
+
+def _take_command():
+    """
+    Takes voice instructions from the user
+    :return: command
+    """
+
+    r = sr.Recognizer()
+    r.energy_threshold = 4000  # adjust this value to your liking
+
+    with sr.Microphone() as source:
+        print("Say something!")
+        audio = r.listen(source)
+
+    try:
+        text = r.recognize_google(audio)
+        print(f"You said: {text}")
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print(f"Could not request results from Google Speech Recognition service; {e}")
+    except Exception as e:
+        print(e)
 
 
 class VoiceAssistant:
@@ -11,39 +37,13 @@ class VoiceAssistant:
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
 
-    def _take_command(self):
-        """
-        Takes voice instructions from the user
-        :return: command
-        """
-        r = sr.Recognizer()
-        print("a")
-
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source, duration=1)
-            print("Listening...")
-            r.pause_threshold = 1
-            audio = r.listen(source)
-
-        try:
-            print("Recognizing...")
-            query = r.recognize_google(audio, language='en-in')
-            print(f"User said: {query}\n")
-
-        except Exception as e:
-            print(e)
-            print("Unable to Recognize your voice.")
-            return "None"
-
-        return query
-
-    def speak(self, audio):
+    def speak(self, text):
         """
         Makes the engine to speak
-        :param audio: String for the engine speech
+        :param text: String for the engine speech
         :return: None
         """
-        self.engine.say(audio)
+        self.engine.say(text)
         self.engine.runAndWait()
 
     def hello(self, name, floor_number):
@@ -67,12 +67,10 @@ class VoiceAssistant:
                 self.speak(f"Good Evening")
 
             self.speak(f"Would you like to get to floor {floor_number}?")
-            self._take_command()
+            _take_command()
 
         # else:
         #     self.speak("Sorry, can't recognize you")
 
     #  except:
     #      print("Already in process...")
-
-
