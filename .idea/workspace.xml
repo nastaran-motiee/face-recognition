@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39b18798-aec8-4ee8-8de8-f075fadeaf4e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartElevatorSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration_file.ini" beforeDir="false" afterPath="$PROJECT_DIR$/configuration_file.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kivy_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/kivy_camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/images/Joe_Biden_presidential_portrait.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/images/NastaranMotiee.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="39b18798-aec8-4ee8-8de8-f075fadeaf4e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +142,7 @@
       <workItem from="1677371272028" duration="147000" />
       <workItem from="1677371459823" duration="595000" />
       <workItem from="1677410385808" duration="7849000" />
-      <workItem from="1677418435776" duration="3676000" />
+      <workItem from="1677418435776" duration="3893000" />
     </task>
     <servers />
   </component>
