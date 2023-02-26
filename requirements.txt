@@ -22,5 +22,6 @@ face_recognition
 SpeechRecognition
 opencv-python
 pymongo
+cvzone
 
 
